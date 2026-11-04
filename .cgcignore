@@ -48,5 +48,4 @@ tasks/*/media/
 *.obj
 *.stl
 # 编辑器/工具状态
-.openchamber/
 mjrl_lab.egg-info/

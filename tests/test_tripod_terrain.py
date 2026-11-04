@@ -1,6 +1,6 @@
 """`jumper.tripod` on generated ground: four switches, all off by default.
 
-The ladder in `.openchamber/plans/jumper-terrain-and-closeout.md` climbs in steps
+The terrain ladder climbs in steps
 of five millimetres, so the flag has to take millimetres and nothing else: a
 config that reads "roughness 5" and means five centimetres would turn L1 into L4
 without saying so.

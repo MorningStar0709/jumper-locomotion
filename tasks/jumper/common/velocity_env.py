@@ -541,7 +541,7 @@ def velocity_env_cfg(
     # **Flat is the default and has to stay that way.** Every result this
     # repository has measured was measured on it, and a default that quietly grew
     # bumps would make each of them look like a regression. The ladder in
-    # `.openchamber/plans/jumper-terrain-and-closeout.md` asks for terrain one
+    # the terrain ladder plan (internal) asks for terrain one
     # step at a time instead, which is also why the amplitude is a number here
     # rather than a scene preset: a preset cannot say "five millimetres".
     assert cfg.scene.terrain is not None

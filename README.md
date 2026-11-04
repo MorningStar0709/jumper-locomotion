@@ -120,6 +120,27 @@ difference below the measurement's resolution is not a difference
 
 ---
 
+## What I would do next
+
+Three open ends, in the order I would take them — each one is a question the work above left
+measurable rather than a wish:
+
+1. **The staircase past 3 cm.** Two attempts to step up (3.5 cm and 4 cm, both resumed from the
+   3 cm arm) destroyed the gait, while the same policy walks 4 cm fine. That says the missing
+   piece is the curriculum, not the ceiling: a surface that mixes 3 cm and 4 cm tiles would let a
+   policy meet the harder step without the whole grid leaving the distribution it was trained on.
+   The mixture machinery already exists; what is missing is a rung that varies *depth* rather
+   than amplitude.
+2. **A pose source good enough for path tracking.** The line loop lost to the IMU-only loop by an
+   order of magnitude, and the reason is dead reckoning: 0.19 m of drift per 10 m, amplified by
+   the loop that corrects against it. Foot odometry cannot be fixed by tuning — slip is
+   unobservable from the feet alone. The honest options are a second reference (the robot has no
+   camera) or a short-horizon use that never lets the drift accumulate.
+3. **The first hour on real hardware.** Nothing here has touched a board. Two constants are
+   control-rate dependent and would be the first things to re-check: the stall window (75 steps at
+   50 Hz) and the heading gain (2.0 rad/s per rad), both of which assume the loop runs at 50 Hz on
+   hardware that may not.
+
 ## Reproduce
 
 This repository is the **work itself, not a self-contained install**: it is a snapshot of the

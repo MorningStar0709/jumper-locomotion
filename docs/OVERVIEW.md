@@ -112,6 +112,15 @@ the first's 9.16), and a policy can pass a replay test while failing the walk: t
 a 19-stall episode only after a stall terminator was added, which is what taught the difference
 between "this policy cannot walk here" and "this policy cannot be trained here".
 
+## What is left
+
+The staircase past 3 cm is a curriculum problem, not a ceiling: two resumed attempts destroyed
+the gait while the same policy walks 4 cm fine, so the missing piece is a surface that mixes
+depths. Path tracking is blocked on a pose source — dead reckoning drifts 0.19 m per 10 m and the
+loop amplifies it, and slip is not observable from the feet. And none of this has touched a board:
+the stall window and the heading gain both assume a 50 Hz loop, which is the first thing to check
+on hardware.
+
 ## How to read the rest
 
 This file is the narrative. The ten files in [`reports/`](reports/INDEX.md) are the notebooks
