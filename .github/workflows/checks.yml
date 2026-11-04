@@ -8,7 +8,7 @@ name: Checks
 # reports quote their results from there.
 #
 # So CI checks what this tree can honestly prove about itself — that it lints, that every
-# relative link resolves, and that nothing upstream has been copied in by accident.
+# relative link resolves inside the tree, and that nothing upstream has been copied in.
 
 on:
   push:
@@ -18,19 +18,25 @@ on:
 permissions:
   contents: read
 
+# One run per branch: a push to a pull request's branch would otherwise start the same
+# three jobs twice, and a superseded run is not worth its checkouts.
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     name: Ruff
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.13"
       # Pinned, because ruff's own findings moved under this repository once already
-      # (see the note above [tool.ruff.lint] in pyproject.toml). The rule groups are
-      # written out there too, so a new ruff default cannot widen what is checked.
+      # (see the note above [tool.ruff.lint] in pyproject.toml, which pins it too). The
+      # rule groups are written out there as well, so a new default cannot widen the check.
       - run: python -m pip install --disable-pip-version-check ruff==0.17.3
       - run: python -m ruff check .
 
@@ -39,8 +45,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.13"
       # A link that worked in the full checkout can point at a file this slice does not
@@ -52,8 +58,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.13"
       # Fails if a checkpoint, an upstream asset tree or a build output is ever committed:
