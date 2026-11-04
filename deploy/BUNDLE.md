@@ -751,9 +751,9 @@ It goes in only as the English one with its text changed — `source`, `summary`
 `leave`, `keyboard`, `pad` and `does`, in the pad's list, the keyboard's and the switches
 alike — and every mode, control, key, modifier, device and `from` where the English has it;
 then it is listed in `manuals` and `files`, the bundle is held to
-[`app.schema`](app.schema) again, and the `.app` is packed again. The
-[`bundle-manual`](../.claude/skills/bundle-manual/SKILL.md) skill is how an agent writes
-the Chinese one. The English is always the source: a manual written first in another
+[`app.schema`](app.schema) again, and the `.app` is packed again. In the full checkout a
+`bundle-manual` skill is how an agent writes the Chinese one; this slice keeps the English
+manual and its generator. The English is always the source: a manual written first in another
 language would have no generator holding it to the bindings.
 
 ## `<name>.app` — the archive

@@ -111,7 +111,7 @@ Over ssh, read-only:
 | IDL headers | 4, from libmbus | identical to what `fsm/build.rs` generated then; since the 2026-09-29 refresh to mbus `d9875988f065` `MotorControl::State` is 800 → 832 bytes, which libmbus 2.4.0 predates -- not rechecked on the board (see [`dds/README.md`](dds/README.md)) |
 | `joint_names` | 22 | same order as `wire_joint_order` |
 
-`.claude/skills/deploy/scripts/check_board.py` re-runs all of it.
+In the full checkout a board preflight script re-runs all of it; it is not part of this slice.
 
 **A controller was running as a service and active during those checks.** Everything above
 is read-only for that reason. Publishing motor commands while one is running means two

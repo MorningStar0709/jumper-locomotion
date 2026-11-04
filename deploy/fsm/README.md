@@ -126,9 +126,9 @@ cleanly and then fails to load on the robot.
 
 On Linux you can also build natively — `cargo test` needs CycloneDDS installed
 and Rockchip's header fetched once with `bash vendor/rknpu2/fetch.sh` (the
-header and the runtime are Rockchip's and are not committed; see
-[`vendor/rknpu2/README.md`](vendor/rknpu2/README.md)) — but the NPU feature
-(`--features rknn`) links an aarch64 `.so` and will not.
+header and the runtime are Rockchip's and are not committed; the fetch script
+and its README live in the full checkout, not in this slice) — but the NPU
+feature (`--features rknn`) links an aarch64 `.so` and will not.
 
 ## What is tested, and what cannot be
 
