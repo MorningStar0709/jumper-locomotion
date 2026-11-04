@@ -5,6 +5,12 @@ one is configured by a recorded performance, so the material is what makes it a
 task at all.
 
 The demonstration choreography and its face animation — `demo.npz`, `demo.mp4` —
+
+> **Not in this slice.** This repository carries the code and the docs, not the
+> 30.5 MB of recorded choreography: publishing a recorded performance is a separate
+> decision from publishing the code that plays it. `--task jumper.dance` therefore
+> needs those two files from the full checkout.
+
 are committed, 30.5 MB of them, so `--task jumper.dance` trains and plays from a
 fresh clone. **The music the dance was made for is not**: its source could not be
 established, so it is not published with the repository. Training never reads the

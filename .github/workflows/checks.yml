@@ -1,10 +1,14 @@
 name: Checks
 
-# This repository is a curated slice of a larger checkout: the simulation framework, the
-# robot assets and the checkpoints live upstream, so the full test suite cannot run here.
-# What CI checks is what this tree can honestly prove about itself — that it lints, that
-# every relative link resolves, and that nothing upstream has been copied in by accident.
-# The test suite itself runs in the upstream checkout; the reports quote it.
+# This repository is a curated slice of a larger checkout: the simulation framework
+# (`rl/`, which is also where the `mjrl` package lives), the robot assets and the
+# checkpoints stay upstream. That has a consequence worth stating plainly instead of
+# hiding behind a green badge: the ~80 test files in `tests/` cannot run here, because
+# importing `mjrl` resolves outside this tree. They run in the upstream checkout, and the
+# reports quote their results from there.
+#
+# So CI checks what this tree can honestly prove about itself — that it lints, that every
+# relative link resolves, and that nothing upstream has been copied in by accident.
 
 on:
   push:
@@ -24,9 +28,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-      # The rule set lives in pyproject.toml, so the ruff version is not what decides
-      # what passes here.
-      - run: python -m pip install --disable-pip-version-check ruff
+      # Pinned, because ruff's own findings moved under this repository once already
+      # (see the note above [tool.ruff.lint] in pyproject.toml). The rule groups are
+      # written out there too, so a new ruff default cannot widen what is checked.
+      - run: python -m pip install --disable-pip-version-check ruff==0.17.3
       - run: python -m ruff check .
 
   links:

@@ -19,17 +19,17 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKIP = {".git", "node_modules", "__pycache__"}
 
-# [text](target) and ![alt](target). Not the bare angle form: prose uses <name> and
-# <date-time> as placeholders all over these documents, and those are not links.
-LINK = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)[^)]*\)")
+# Every link target is what follows "](…". Matching the target rather than the whole
+# [text](target) pair is what makes nested forms work: [![alt](img)](outer) yields both
+# "img" and "outer", where a [..](..) pattern would see only the inner one.
+LINK = re.compile(r"\]\(\s*([^)]+?)\s*\)")
+FENCE = re.compile(r"```.*?```", re.S)
+INLINE = re.compile(r"`[^`\n]*`")
+SCHEME = re.compile(r"^[a-zA-Z][a-zA-Z0-9+.-]*:")
 
 
 def markdown_files() -> list[pathlib.Path]:
     return [p for p in ROOT.rglob("*.md") if not SKIP & set(p.relative_to(ROOT).parts)]
-
-
-FENCE = re.compile(r"```.*?```", re.S)
-INLINE = re.compile(r"`[^`\n]*`")
 
 
 def prose(text: str) -> str:
@@ -38,14 +38,12 @@ def prose(text: str) -> str:
 
 
 def targets(text: str) -> list[str]:
-    found = []
-    for match in LINK.finditer(text):
-        found.append(match.group(1) or match.group(2) or "")
-    return [t for t in found if t]
+    return [match.group(1) for match in LINK.finditer(text)]
 
 
 def resolve(source: pathlib.Path, target: str) -> pathlib.Path | None:
-    if not target or target.startswith(("http://", "https://", "mailto:", "#")):
+    """The path a target points at, or None when it does not point inside this tree."""
+    if not target or target.startswith("#") or SCHEME.match(target) or target.startswith("/"):
         return None
     target = target.split("#", 1)[0]
     if not target:
@@ -54,9 +52,10 @@ def resolve(source: pathlib.Path, target: str) -> pathlib.Path | None:
 
 
 def main() -> int:
+    sources = markdown_files()
     misses = []
     checked = 0
-    for source in markdown_files():
+    for source in sources:
         for target in targets(prose(source.read_text(encoding="utf-8"))):
             path = resolve(source, target)
             if path is None:
@@ -66,7 +65,7 @@ def main() -> int:
                 misses.append((source.relative_to(ROOT), target))
     for source, target in misses:
         print(f"{source}: {target} does not exist")
-    print(f"checked {checked} relative links in {len(markdown_files())} files, {len(misses)} missing")
+    print(f"checked {checked} relative links in {len(sources)} files, {len(misses)} missing")
     return 1 if misses else 0
 
 
