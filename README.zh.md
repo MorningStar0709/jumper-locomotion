@@ -2,6 +2,8 @@
 
 ![Jumper](docs/media/jumper-hero.png)
 
+[![Checks](https://github.com/MorningStar0709/jumper-locomotion/actions/workflows/checks.yml/badge.svg)](https://github.com/MorningStar0709/jumper-locomotion/actions/workflows/checks.yml)
+
 [English](README.md) | **简体中文**
 
 这是 22 自由度螃蟹机器人 **Jumper** 运动栈上的工作，建立在

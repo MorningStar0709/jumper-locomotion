@@ -2,6 +2,8 @@
 
 ![Jumper](docs/media/jumper-hero.png)
 
+[![Checks](https://github.com/MorningStar0709/jumper-locomotion/actions/workflows/checks.yml/badge.svg)](https://github.com/MorningStar0709/jumper-locomotion/actions/workflows/checks.yml)
+
 **English** | [简体中文](README.zh.md)
 
 Work on the locomotion stack of **Jumper**, a 22-DoF crab robot, built on
