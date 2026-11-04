@@ -29,10 +29,10 @@
 
 | 名字 | 路径 | 是什么 |
 |---|---|---|
-| `base` | `logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_9999.pt` | 三种子平地基线之一（seed 2，10000 iter，4096 envs） |
-| `plane3k` | `logs/jumper/jumper.tripod/2026-10-30_23-37-10/model_2999.pt` | 4-arm A 臂：scratch 平地 3000 iter |
-| `terr5_3k` | `logs/jumper/jumper.tripod/2026-10-30_22-10-37/model_2999.pt` | 4-arm B 臂：scratch 5 mm 3000 iter |
-| `paved1500` | `logs/jumper/jumper.tripod/2026-10-31_11-12-58/model_11497.pt` | L0：铺装平地续训 1500 iter |
+| `base` | `<run-dir>/model_9999.pt` | 三种子平地基线之一（seed 2，10000 iter，4096 envs） |
+| `plane3k` | `<run-dir>/model_2999.pt` | 4-arm A 臂：scratch 平地 3000 iter |
+| `terr5_3k` | `<run-dir>/model_2999.pt` | 4-arm B 臂：scratch 5 mm 3000 iter |
+| `paved1500` | `<run-dir>/model_11497.pt` | L0：铺装平地续训 1500 iter |
 
 **回放条件**：`--headless --steps 1000 --command 0.5 0 0 --seed <n> --terrain --terrain-roughness-mm <amp>`，200 Hz 物理 / 50 Hz 控制（20 s 仿真），观测噪声开。振幅 0/5/10/15/20/25/35/50/80 mm。每档抽 3–8 次，每次是一个**独立的地面 + 独立噪声**，见表。
 

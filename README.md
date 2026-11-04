@@ -10,6 +10,9 @@ Work on the locomotion stack of **Jumper**, a 22-DoF crab robot, built on
 hardware and the upstream SDK are theirs; what is here is the training and control work
 on top, plus the reports that record what the numbers are and what they are not.
 
+**Read this first:** [docs/OVERVIEW.md](docs/OVERVIEW.md) — one page, the whole thread,
+including the four directions that were tried and refused.
+
 **The one-sentence claim:** on this platform, the terrain ceiling went from *never measured*
 to *25 mm of bumps for the baseline policy, 50 mm for the policy trained up the staircase*,
 the 3 cm staircase became walkable at 0.42 m/s, and straight-line heading error over 10 m
@@ -110,8 +113,9 @@ came from.
 
 ## Reports
 
-All ten in one bilingual index: **[docs/reports/INDEX.md](docs/reports/INDEX.md)** (the reports
-are written in Chinese; the index carries an English line for each).
+Start with the one-page narrative: **[docs/OVERVIEW.md](docs/OVERVIEW.md)**. The nine notebooks
+behind it are indexed bilingually in **[docs/reports/INDEX.md](docs/reports/INDEX.md)** (written in
+Chinese; the index carries an English line for each).
 
 | Report | What it answers |
 |:--|:--|

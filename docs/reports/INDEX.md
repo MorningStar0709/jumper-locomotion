@@ -1,10 +1,16 @@
 # Reports — index / 报告索引
 
-The ten reports behind the numbers, each with a one-line summary in both languages. The
-reports themselves are written in Chinese; every table, figure and number in them is
-language-independent.
+**These are the notebooks, not the introduction.** For the narrative that stands alone, read
+[`../OVERVIEW.md`](../OVERVIEW.md) first; it cites these files for every number it quotes.
 
-这十篇报告支撑 README 里的每个数字。正文为中文，附英文一句摘要；表格与数字与语言无关。
+**这里是实验笔记本，不是导读。** 想先看能独立读的一页，见 [`../OVERVIEW.md`](../OVERVIEW.md)；
+它引用的每个数字都能在此逐篇查到。
+
+The reports are verbatim: written while the work was happening, in Chinese, including sections
+that were later withdrawn — a withdrawn section stays in place with the reason it was withdrawn.
+Every table, figure and number is language-independent.
+
+正文逐字保留：写于实验当时，中文，含后来被撤回的段落（撤回的留在原位并写明原因）。表格、图与数字与语言无关。
 
 | # | Report | English | 中文 |
 |:-:|:-------|:--------|:-----|
@@ -17,7 +23,6 @@ language-independent.
 | 7 | [Heading loop](research-heading-loop-20261102.md) | The loop's effect in simulation, the knee in its gain at 2.0, and what a longer lookahead buys. | 回路在仿真里的效果、增益在 2.0 处的拐点，以及更长前瞻买到什么。 |
 | 8 | [Heading hold in the controller](research-heading-hold-controller-20261102.md) | The same loop in Rust: feed-forward, contract validation, and the two things it refuses. | 同一回路在 Rust 控制器里的实现：前馈、契约校验，以及它拒绝的两类输入。 |
 | 9 | [Pursuit and the line loop](research-pursuit-line-20261104.md) | Foot odometry, forward kinematics, and the line loop that lost to the IMU by an order of magnitude. | 足端里程计、正解算，以及输给 IMU 一个数量级的直线回路。 |
-| 10 | [Heading work, collected](research-heading-pursuit-20261104.md) | The whole heading thread in one place, with the one claim that was withdrawn and why. | 航向这条线的合集，含一处被撤回的结论与撤回原因。 |
 
 Two conventions used throughout: a number without its conditions is not a number, and a
 difference below the measurement's resolution is not a difference — see

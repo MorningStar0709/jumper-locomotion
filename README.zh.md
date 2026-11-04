@@ -9,6 +9,8 @@
 [mjlab](https://github.com/mujocolab/mjlab) 之上。机器人、硬件与上游 SDK 是他们的；
 这里是其上的训练与控制工作，以及记录"这些数字是什么、不是什么"的报告。
 
+**先读这一页：** [docs/OVERVIEW.md](docs/OVERVIEW.md)（英文，一页讲完整条线索，含四个被否决的方向）。
+
 **一句话：** 在这套平台上，地形天花板从*没测过*变成*基线策略 25 mm、沿台阶练上去的策略 50 mm*，
 3 cm 台阶可以 0.42 m/s 走上去，直走 10 米的横向偏差从约 1.8 m 降到 **0.096 m**。
 
@@ -73,7 +75,7 @@ vendor 的 `mjlab`、机器人网格与 Rust vendored crates 留在上游。叠�
 
 ## 报告
 
-十篇的中英双语索引：**[docs/reports/INDEX.md](docs/reports/INDEX.md)**（正文为中文，索引每篇附一句英文）。
+先读能独立读的一页：**[docs/OVERVIEW.md](docs/OVERVIEW.md)**。它背后的九篇笔记本由 **[docs/reports/INDEX.md](docs/reports/INDEX.md)** 索引（正文为中文，每篇附一句英文）。
 
 | 报告 | 回答什么 |
 |:--|:--|
@@ -86,7 +88,6 @@ vendor 的 `mjlab`、机器人网格与 Rust vendored crates 留在上游。叠�
 | [航向环](docs/reports/research-heading-loop-20261102.md) | 回路在仿真里的效果与增益拐点 |
 | [控制器里的航向保持](docs/reports/research-heading-hold-controller-20261102.md) | 同一回路的 Rust 实现、契约与拒绝项 |
 | [纯追踪与直线回路](docs/reports/research-pursuit-line-20261104.md) | 足端里程计、正解算，以及输给 IMU 的回路 |
-| [航向工作合集](docs/reports/research-heading-pursuit-20261104.md) | 航向这条线的全景，含一处撤回的结论 |
 
 ## 目录结构
 

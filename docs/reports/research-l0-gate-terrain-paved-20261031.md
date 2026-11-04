@@ -16,7 +16,7 @@
 
 ### 1.1 为什么有这一级
 
-`jumper.tripod` 的三种子基线（`logs/jumper/jumper.tripod/2026-10-30_06-20-54`，seed 2，10000 iter，4096 envs）全部是平地训练。地形阶梯的设计是先加一级「管道检查」，确认开了地形开关之后训练仍能正常起步，再逐级加粗糙度（±5 mm、±10 mm、台阶）。这一级就是 L0：500 iter，`terrain_type=generator`、`sub_terrains=['flat']`、`max_init_terrain_level=0`。
+`jumper.tripod` 的三种子基线（`<run-dir>`，seed 2，10000 iter，4096 envs）全部是平地训练。地形阶梯的设计是先加一级「管道检查」，确认开了地形开关之后训练仍能正常起步，再逐级加粗糙度（±5 mm、±10 mm、台阶）。这一级就是 L0：500 iter，`terrain_type=generator`、`sub_terrains=['flat']`、`max_init_terrain_level=0`。
 
 ### 1.2 第一天它「失败」了，失败原因是评测地面
 
@@ -76,13 +76,13 @@ L0 的第一版跑在 `2026-10-30_20-42-36`，训练曲线全面退化：`error_
 .venv/bin/python tools/long_run.py --task jumper.tripod --seed 2 \
   --max-iterations 500 --num_envs 4096 --headless \
   --terrain --terrain-roughness-mm=0 \
-  --checkpoint logs/jumper/jumper.tripod/2026-10-30_06-20-54
+  --checkpoint <run-dir>
 
 # 再续 1000 iter（合计 1500）
 .venv/bin/python tools/long_run.py --task jumper.tripod --seed 2 \
   --max-iterations 1000 --num_envs 4096 --headless \
   --terrain --terrain-roughness-mm=0 \
-  --checkpoint logs/jumper/jumper.tripod/2026-10-31_10-45-37
+  --checkpoint <run-dir>
 
 # 闸门评测
 .venv/bin/python tools/benchmark.py benchmarks/l0-gate.json
@@ -209,7 +209,7 @@ L0 的第一版跑在 `2026-10-30_20-42-36`，训练曲线全面退化：`error_
 | 评测原始结果（8 个用例） | `benchmarks/l0-gate.score.d/*.json` | 2026-10-31 11:40 至 11:46 逐次写入 |
 | 评测汇总 | `benchmarks/l0-gate.score.json` | 2026-10-31 11:46 |
 | 评测定义 | `benchmarks/l0-gate.json` | 指向 `model_11497` 的版本 |
-| 训练曲线 | `logs/jumper/jumper.tripod/{2026-10-30_06-20-54,2026-10-31_10-45-37,2026-10-31_11-12-58}/events.out.tfevents.*` | 末 100 条均值 |
+| 训练曲线 | `<run-dir>/{2026-10-30_06-20-54,2026-10-31_10-45-37,2026-10-31_11-12-58}/events.out.tfevents.*` | 末 100 条均值 |
 | 训练读数 | 各 run 目录 `status.json` | 终态 |
 | 接触抖动实测 | `scenes/rough.py:305-316` | 代码内注释记录的历史测量 |
 
@@ -238,7 +238,7 @@ PY
 from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
 import glob
 for run in ["2026-10-30_06-20-54", "2026-10-31_10-45-37", "2026-10-31_11-12-58"]:
-    p = f"logs/jumper/jumper.tripod/{run}"
+    p = f"<run-dir>/{run}"
     ea = EventAccumulator(sorted(glob.glob(p + "/events.out.tfevents.*"))[0], size_guidance={"scalars": 0})
     ea.Reload()
     v = [s.value for s in ea.Scalars("Metrics/twist/error_vel_yaw")][-100:]
@@ -343,10 +343,10 @@ PY
 .venv/bin/python tools/long_run.py --task jumper.tripod --seed 2 --max-iterations 1000 \
   --num_envs 4096 --headless --no-tb-open-browser \
   --terrain --terrain-roughness-mm 25 --terrain-seed 0 \
-  --checkpoint logs/jumper/jumper.tripod/2026-10-30_06-20-54
+  --checkpoint <run-dir>
 ```
 
-产物 `logs/jumper/jumper.tripod/2026-10-31_21-45-37/`：999 iter、`step_time` 1.95、2036 s、
+产物 `<run-dir>/`：999 iter、`step_time` 1.95、2036 s、
 21 个 checkpoint、末次 `model_10998.pt`。25 mm 这一档是扫描给出的「刚过可用天花板」的位置
 （35 mm 可用、50 mm 起崩溃），不是任意的中间值。
 
@@ -499,7 +499,7 @@ checkpoint **全是 `2026-10-30_06-20-54/model_9999.pt`**。三臂与两段式�
 
 ```
 Bext5-3000  jumper.tripod  seed=2  3000 iter  5 mm  --terrain-seed=0
-            start_from logs/jumper/jumper.tripod/2026-10-30_22-10-37 (3000 iter, 已完成)
+            start_from <run-dir> (3000 iter, 已完成)
 ```
 
 它回答的问题只有一个：**7.2 是硬平台还是会缓慢下降。** 从「已经在 5 mm 上收敛到 7.23」的
@@ -579,7 +579,7 @@ checkpoint 再走 3000 iteration，如果 entropy 继续往下走，说明是耐
 
 ```
 S2cm-ext-2000   jumper.tripod  seed=2  2000 iter  2 cm 台阶  --terrain-seed=0
-                start_from logs/jumper/jumper.tripod/2026-11-01_00-57-14
+                start_from <run-dir>
 ```
 
 它要回答的是：台阶上的这条收益曲线是还在上升，还是 1000 iteration 已经到位。如果是前者，
@@ -781,13 +781,13 @@ checkpoint，唯一变量 `--yaw-weight` 2.0 → 5.0。问的是：把航向的�
 | 项 | 值 |
 |---|---|
 | 任务 / 种子 / 环境数 | `jumper.tripod` / 2 / 4096 |
-| 起点 | `logs/jumper/jumper.tripod/2026-10-30_06-20-54`（与 `S2cm-1000` 同一个） |
+| 起点 | `<run-dir>`（与 `S2cm-1000` 同一个） |
 | 地面 | 2 cm 台阶，`--terrain --terrain-steps-m=0.02 --terrain-seed=0` |
 | 迭代 | 1000 |
 | 唯一变量 | `--yaw-weight` 5.0（对照 `2026-11-01_00-57-14` 是 2.0） |
 
 清单 `manifests/terrain-yaw5.json`，结果 `manifests/terrain-yaw5.result.json`（`ok: true`，
-`rc: 0`）。run 目录 `logs/jumper/jumper.tripod/2026-11-01_09-49-26`，`status.json` 为
+`rc: 0`）。run 目录 `<run-dir>`，`status.json` 为
 `completed`、`iter` 999、`elapsed_s` 1331、21 个 checkpoint，最新 `model_10998.pt`。
 
 ### 14.2 训练曲线（前 100 与后 100 的均值）
@@ -1200,7 +1200,7 @@ seed 2、4096 envs、从 `2026-10-30_06-20-54/model_9999` 起）。
 
 | 项 | 值 |
 |---|---|
-| run 目录 | `logs/jumper/jumper.tripod/2026-11-01_20-22-20` |
+| run 目录 | `<run-dir>` |
 | 迭代 / 用时 | 499 / 668 s（1.32 s/iter） |
 | 显存峰值 | 16384 MiB（`peak_mem_mib`） |
 | 熵 前100 → 后100 | 8.13 → **11.85** |
@@ -1296,7 +1296,7 @@ seed 2、4096 envs、从 `2026-10-30_06-20-54/model_9999` 起）。
 
 | 项 | 值 |
 |---|---|
-| run 目录 | `logs/jumper/jumper.tripod/2026-11-01_21-28-45` |
+| run 目录 | `<run-dir>` |
 | 迭代 / 用时 | 499 / 659 s |
 | 显存峰值 | 16383 MiB |
 | 熵 前100 → 后100 | 11.98 → 10.88 |
@@ -1503,7 +1503,7 @@ S2cm-ext-mix-2000  manifests/terrain-mix-ext.json
   4096 envs、seed 2、--terrain-seed 0
 ```
 
-运行 `logs/jumper/jumper.tripod/2026-11-02_09-51-50`：1999 迭代、3477 s、`rc=0`、
+运行 `<run-dir>`：1999 迭代、3477 s、`rc=0`、
 峰值 16496 MiB、`result.json` 1/1 已验证。
 
 ### 24.2 训练曲线：误差与奖励同涨，但这次不是塌陷

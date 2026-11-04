@@ -66,6 +66,6 @@
 ## 七、证据链
 
 - 清单：`manifests/terrain-mix14-scratch.json`（臂 A）、`manifests/terrain-mix14-cont.json`（臂 B）
-- 运行：`logs/jumper/jumper.tripod/2026-11-03_14-54-19`、`logs/jumper/jumper.tripod/2026-11-04_13-27-32`
+- 运行：`<run-dir>`、`<run-dir>`
 - 回放：`<scratch>/mix14cont/raw/{ground}__{dir}-straight-s{n}.json`（30 格，`failed=0`），驱动 `<scratch>/mix14cont/run_eval.py`
 - 相关报告：`docs/reports/research-night-3cm-mix-20261103.md` §八–§十二（1:4 续训与从零的账本）
