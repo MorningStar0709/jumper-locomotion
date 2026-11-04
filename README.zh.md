@@ -2,7 +2,7 @@
 
 ![Jumper](docs/media/jumper-hero.png)
 
-**English** | [简体中文](README.zh.md)
+[English](README.md) | **简体中文**
 
 这是 22 自由度螃蟹机器人 **Jumper** 运动栈上的工作，建立在
 [KingKongRobotics/jumper](https://github.com/KingKongRobotics/jumper) 与它 vendor 的
@@ -73,5 +73,29 @@ vendor 的 `mjlab`、机器人网格与 Rust vendored crates 留在上游。叠�
 
 ## 报告
 
-见 [README.md](README.md#reports) 的表格，共十篇，覆盖地形扫描与天花板、闸门、地形阶梯、混合地面、
-航向漂移、航向环、控制器实现、纯追踪与直线回路。
+十篇的中英双语索引：**[docs/reports/INDEX.md](docs/reports/INDEX.md)**（正文为中文，索引每篇附一句英文）。
+
+| 报告 | 回答什么 |
+|:--|:--|
+| [地形扫描与天花板](docs/reports/research-terrain-scan-ceiling-20261031.md) | 基线在哪里走不动，以及让早期扫描失去意义的三个工具缺陷 |
+| [闸门 L0–L1](docs/reports/research-l0-gate-terrain-paved-20261031.md) | 闸门本身：为什么偏航 MAE 是错的量，以及替代它的三条规则 |
+| [地形阶梯](docs/reports/research-terrain-ladder-20261101.md) | 十二个训练臂、"能走"与"能训"两条曲线、台阶的三处拐角 |
+| [3 cm 混合](docs/reports/research-night-3cm-mix-20261103.md) | 混合配比、5 mm 的代价，以及分辨力台账 |
+| [从零混合](docs/reports/research-mix14-from-scratch-20261104.md) | 混合能否替代"先走过去"——不能 |
+| [航向漂移](docs/reports/research-heading-drift-20261102.md) | 直走 10 米偏多少，以及积分平均偏航率为何会骗人 |
+| [航向环](docs/reports/research-heading-loop-20261102.md) | 回路在仿真里的效果与增益拐点 |
+| [控制器里的航向保持](docs/reports/research-heading-hold-controller-20261102.md) | 同一回路的 Rust 实现、契约与拒绝项 |
+| [纯追踪与直线回路](docs/reports/research-pursuit-line-20261104.md) | 足端里程计、正解算，以及输给 IMU 的回路 |
+| [航向工作合集](docs/reports/research-heading-pursuit-20261104.md) | 航向这条线的全景，含一处撤回的结论 |
+
+## 目录结构
+
+```
+tasks/jumper/    任务定义：观测、奖励、地形、终止条件
+deploy/fsm/src/  Rust 控制器：航向保持、正解算、足端里程计、纯追踪
+scripts/         play、export、deploy
+tools/           长跑、队列、健康判诊、档位探针
+tests/           Python 测试；`cargo test` 覆盖控制器
+docs/reports/    上面十篇报告
+docs/EXPLORATION.md  本工作遵循的测量规矩
+```

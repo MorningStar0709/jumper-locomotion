@@ -2,6 +2,8 @@
 
 ![Jumper](docs/media/jumper-hero.png)
 
+**English** | [简体中文](README.zh.md)
+
 Work on the locomotion stack of **Jumper**, a 22-DoF crab robot, built on
 [KingKongRobotics/jumper](https://github.com/KingKongRobotics/jumper) and the
 [mjlab](https://github.com/mujocolab/mjlab) training framework it vendors. The robot, the
@@ -107,6 +109,9 @@ Trained checkpoints are not shipped here; the reports name the run directory eac
 came from.
 
 ## Reports
+
+All ten in one bilingual index: **[docs/reports/INDEX.md](docs/reports/INDEX.md)** (the reports
+are written in Chinese; the index carries an English line for each).
 
 | Report | What it answers |
 |:--|:--|
