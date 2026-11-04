@@ -20,7 +20,28 @@ fell from ~1.8 m of lateral drift to **0.096 m**.
 
 ---
 
-## The two demos that carry it
+## The picture before the videos
+
+Two figures, both drawn from tables that already existed — no new measurement, nothing
+smoothed. The script that draws them is [`docs/figures/draw.py`](docs/figures/draw.py).
+
+![terrain ceiling curves](docs/media/ceiling-curves.png)
+
+*Above: how much of the commanded speed each policy actually achieves, as the ground gets
+rougher. Below, on a log scale: its velocity error as a multiple of its own flat-ground
+error. The ceiling is where a curve crosses **both** lines — 25 mm for the baseline, 35 mm
+for the rough-trained and mixture arms, 50 mm for the staircase one. Past 65 mm the mixture
+policy collapses to 6 % of the commanded speed, which is the cliff made visible.*
+
+![heading drift](docs/media/heading-drift.png)
+
+*The heading story in one picture: after 10 m at 0.5 m/s the open-loop policy is 1.84 m off
+its line; the same policy with the controller's heading loop is 0.096 m off. Drawn to scale
+from the medians — the spread across seeds is ±3.9 m on the left and ±0.1 m on the right.*
+
+---
+
+## Two videos that carry the rest
 
 **Straight walking, with and without the heading loop.** Same policy, same 50 mm bumps,
 open loop on the left, the real controller on the right (the packaged `.app`, driven through
@@ -35,6 +56,20 @@ walking paving, 5 mm bumps and a 3 cm staircase.
 |:-:|:-:|:-:|
 | ![paving](docs/media/terrain-mix13-pave.gif) | ![bumps](docs/media/terrain-mix13-rough5.gif) | ![stairs](docs/media/terrain-mix13-stairs3.gif) |
 | 0.48 m/s, error 0.017 | 0.48 m/s, error 0.026 | 0.42 m/s, error 0.083 |
+
+**The one that took the most work to get right, and the price of it.** Left: a policy that
+walked 2 cm stairs and was then trained on 3 cm — it climbs. Right: a policy trained on
+3 cm from flat ground — it stands at the bottom, because 3 cm is past the training boundary
+even though the policy above walks 4 cm fine.
+
+[![stairs comparison](docs/media/terrain-stairs3cm-compare.gif)](docs/media/terrain-stairs3cm-compare.gif)
+
+**Same 50 mm ground, two policies.** Left: the baseline, which stalls. Right: the policy
+trained on 5 mm bumps, which keeps walking.
+
+| baseline | trained on 5 mm |
+|:-:|:-:|
+| ![rough, baseline](docs/media/terrain-rough50mm-baseline.gif) | ![rough, trained](docs/media/terrain-rough50mm-trained.gif) |
 
 ---
 

@@ -36,6 +36,8 @@ than it sounds: at seven seeds the test can only resolve effects two to three ti
 the ones we were arguing about, and saying so is part of the result
 ([gate report](reports/research-l0-gate-terrain-paved-20261031.md)).
 
+![terrain ceiling curves](media/ceiling-curves.png)
+
 ## Where the terrain ceiling is
 
 With the gate in place, four policies were walked over ten ground roughnesses and three stair
@@ -59,6 +61,8 @@ the same are not:
 So the boundary is an absolute depth of about 3 cm, not the size of the step taken to reach it,
 and no replay-only measurement can find it in advance. A probe that only watches the policy walk
 answers the first question and is blind to the second.
+
+![heading drift](media/heading-drift.png)
 
 ## Where the heading ceiling is
 

@@ -14,6 +14,21 @@
 **一句话：** 在这套平台上，地形天花板从*没测过*变成*基线策略 25 mm、沿台阶练上去的策略 50 mm*，
 3 cm 台阶可以 0.42 m/s 走上去，直走 10 米的横向偏差从约 1.8 m 降到 **0.096 m**。
 
+## 先看图，再看动图
+
+两张图都直接取自已有的表，没有新测量、没有平滑；画图脚本是 [`docs/figures/draw.py`](docs/figures/draw.py)。
+
+![地形天花板曲线](docs/media/ceiling-curves.png)
+
+*上：地面越粗，每条策略实际跑出指令速度的几成。下（对数轴）：它的速度误差是自己平地的几倍。
+天花板是曲线**同时**越过两条线的位置——基线 25 mm、起伏与混合两条臂 35 mm、台阶那条 50 mm。
+过了 65 mm，混合策略只剩 6% 的指令速度，断崖一眼可见。*
+
+![航向漂移](docs/media/heading-drift.png)
+
+*航向这条线一张图：走完 10 米、0.5 m/s，开环偏 1.84 m，加了控制器里的航向环是 0.096 m。
+按中位数等比绘制——左侧种子跨度 ±3.9 m，右侧 ±0.1 m。*
+
 ## 两张最有说服力的动图
 
 同一策略、同一台 50 mm 起伏：左侧开环，右侧是**真的控制器**（打包好的 `.app`，脚本摇杆驱动，不是在 Python 侧补的修正）。
@@ -26,6 +41,17 @@
 |:-:|:-:|:-:|
 | ![铺装](docs/media/terrain-mix13-pave.gif) | ![起伏](docs/media/terrain-mix13-rough5.gif) | ![台阶](docs/media/terrain-mix13-stairs3.gif) |
 | 0.48 m/s，误差 0.017 | 0.48 m/s，误差 0.026 | 0.42 m/s，误差 0.083 |
+
+**最费劲的一条，以及它的代价。** 左：先走通 2 cm、再续训 3 cm 的策略，能上去。
+右：从平地直接训 3 cm 的策略，站在下面不动——3 cm 已越过训练边界，尽管左边那条走 4 cm 都没问题。
+
+[![台阶对比](docs/media/terrain-stairs3cm-compare.gif)](docs/media/terrain-stairs3cm-compare.gif)
+
+**同一片 50 mm 地面，两条策略。** 左：基线，原地停住。右：在 5 mm 起伏上练过的策略，继续走。
+
+| 基线 | 5 mm 训过 |
+|:-:|:-:|
+| ![起伏·基线](docs/media/terrain-rough50mm-baseline.gif) | ![起伏·训过](docs/media/terrain-rough50mm-trained.gif) |
 
 ## 数字与条件
 
