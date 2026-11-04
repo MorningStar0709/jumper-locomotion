@@ -1,0 +1,207 @@
+{
+  "schema": "heading_loop_grounds/1",
+  "measured_at": "2026-11-03T18:50:00+08:00",
+  "policies": {
+    "base": "2026-10-30_06-20-54/model_9999.pt",
+    "stairs-ext": "2026-11-01_06-23-09/model_12997.pt",
+    "rough5-bext": "2026-11-01_02-01-24/model_5998.pt",
+    "mix": "2026-11-01_11-00-10/model_10998.pt",
+    "mix14": "2026-11-03_10-29-27/model_12996.pt"
+  },
+  "grounds": {
+    "pave": "1 m paving: --terrain --terrain-roughness-mm 0",
+    "rough_50mm": "50 mm bumps: --terrain --terrain-roughness-mm 50",
+    "stairs_3cm": "3 cm staircase risers: --terrain --terrain-steps-m 0.03"
+  },
+  "protocol": {
+    "controller": "heading hold, feed-forward: commanded wz = command.wz + clamp(kp * heading error, +-wz_max_rad_s), clamped to the contract's ang_vel_z band",
+    "kp": 2.0,
+    "wz_max_rad_s": 0.5,
+    "deadband_rad": 0.0,
+    "command": {
+      "vx": 0.5,
+      "vy": 0.0,
+      "wz": 0.0
+    },
+    "control_hz": 50,
+    "distance_m": 10.0,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "seed_runs": 75,
+    "failed_seed_runs": 0,
+    "driver": "run_closed.py --kp 2.0 --wz-max 0.5; measure_closed.py holds the 20 ms control period and integrates the true pose from the simulator"
+  },
+  "note": "Cross-track and heading keys are the absolute value of the signed quantity the driver records, hence the _abs suffix; closed_cross_min_abs is the smallest magnitude, not the most negative value. All five seeds completed 10 m in every cell. Heading is not the residual: 13 of 15 cells have a heading median below 3 degrees; the exceptions are base on rough_50mm (8.17 deg) and rough5-bext on stairs_3cm (3.02 deg), both policies that stumble there.",
+  "rows": [
+    {
+      "policy": "base",
+      "ground": "pave",
+      "n": 5,
+      "closed_cross_median_abs": 0.0685,
+      "closed_cross_min_abs": 0.0033,
+      "closed_cross_max_abs": 0.2001,
+      "closed_heading_median_abs_deg": 0.76,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1059
+    },
+    {
+      "policy": "base",
+      "ground": "rough_50mm",
+      "n": 5,
+      "closed_cross_median_abs": 0.2944,
+      "closed_cross_min_abs": 0.0058,
+      "closed_cross_max_abs": 0.4241,
+      "closed_heading_median_abs_deg": 8.17,
+      "closed_saturated_fraction_median": 0.0866,
+      "closed_control_steps_to_10m_median": 1501
+    },
+    {
+      "policy": "base",
+      "ground": "stairs_3cm",
+      "n": 5,
+      "closed_cross_median_abs": 0.7304,
+      "closed_cross_min_abs": 0.1398,
+      "closed_cross_max_abs": 2.0466,
+      "closed_heading_median_abs_deg": 1.24,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 2169
+    },
+    {
+      "policy": "stairs-ext",
+      "ground": "pave",
+      "n": 5,
+      "closed_cross_median_abs": 0.1016,
+      "closed_cross_min_abs": 0.0267,
+      "closed_cross_max_abs": 0.2182,
+      "closed_heading_median_abs_deg": 0.25,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1024
+    },
+    {
+      "policy": "stairs-ext",
+      "ground": "rough_50mm",
+      "n": 5,
+      "closed_cross_median_abs": 0.1422,
+      "closed_cross_min_abs": 0.0601,
+      "closed_cross_max_abs": 0.6217,
+      "closed_heading_median_abs_deg": 0.75,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1115
+    },
+    {
+      "policy": "stairs-ext",
+      "ground": "stairs_3cm",
+      "n": 5,
+      "closed_cross_median_abs": 0.1543,
+      "closed_cross_min_abs": 0.0474,
+      "closed_cross_max_abs": 0.2348,
+      "closed_heading_median_abs_deg": 0.24,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1116
+    },
+    {
+      "policy": "rough5-bext",
+      "ground": "pave",
+      "n": 5,
+      "closed_cross_median_abs": 0.0885,
+      "closed_cross_min_abs": 0.0176,
+      "closed_cross_max_abs": 0.1994,
+      "closed_heading_median_abs_deg": 0.48,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1030
+    },
+    {
+      "policy": "rough5-bext",
+      "ground": "rough_50mm",
+      "n": 5,
+      "closed_cross_median_abs": 0.1271,
+      "closed_cross_min_abs": 0.015,
+      "closed_cross_max_abs": 0.2648,
+      "closed_heading_median_abs_deg": 2.3,
+      "closed_saturated_fraction_median": 0.0276,
+      "closed_control_steps_to_10m_median": 1336
+    },
+    {
+      "policy": "rough5-bext",
+      "ground": "stairs_3cm",
+      "n": 5,
+      "closed_cross_median_abs": 0.3888,
+      "closed_cross_min_abs": 0.0288,
+      "closed_cross_max_abs": 0.9144,
+      "closed_heading_median_abs_deg": 3.02,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1533
+    },
+    {
+      "policy": "mix",
+      "ground": "pave",
+      "n": 5,
+      "closed_cross_median_abs": 0.0269,
+      "closed_cross_min_abs": 0.0061,
+      "closed_cross_max_abs": 0.1936,
+      "closed_heading_median_abs_deg": 0.08,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1018
+    },
+    {
+      "policy": "mix",
+      "ground": "rough_50mm",
+      "n": 5,
+      "closed_cross_median_abs": 0.1348,
+      "closed_cross_min_abs": 0.0284,
+      "closed_cross_max_abs": 1.2421,
+      "closed_heading_median_abs_deg": 1.89,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1220
+    },
+    {
+      "policy": "mix",
+      "ground": "stairs_3cm",
+      "n": 5,
+      "closed_cross_median_abs": 0.1604,
+      "closed_cross_min_abs": 0.0105,
+      "closed_cross_max_abs": 0.4559,
+      "closed_heading_median_abs_deg": 1.92,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1195
+    },
+    {
+      "policy": "mix14",
+      "ground": "pave",
+      "n": 5,
+      "closed_cross_median_abs": 0.0132,
+      "closed_cross_min_abs": 0.001,
+      "closed_cross_max_abs": 0.1263,
+      "closed_heading_median_abs_deg": 0.24,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1020
+    },
+    {
+      "policy": "mix14",
+      "ground": "rough_50mm",
+      "n": 5,
+      "closed_cross_median_abs": 0.0927,
+      "closed_cross_min_abs": 0.0027,
+      "closed_cross_max_abs": 0.2062,
+      "closed_heading_median_abs_deg": 0.94,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1118
+    },
+    {
+      "policy": "mix14",
+      "ground": "stairs_3cm",
+      "n": 5,
+      "closed_cross_median_abs": 0.3154,
+      "closed_cross_min_abs": 0.048,
+      "closed_cross_max_abs": 0.7327,
+      "closed_heading_median_abs_deg": 0.62,
+      "closed_saturated_fraction_median": 0.0,
+      "closed_control_steps_to_10m_median": 1168
+    }
+  ]
+}

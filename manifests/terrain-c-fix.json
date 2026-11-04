@@ -1,0 +1,12 @@
+{
+  "runs": [
+    {
+      "name": "C-scratch-terrain10",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 3000,
+      "num_envs": 4096,
+      "args": ["--terrain", "--terrain-roughness-mm=10"]
+    }
+  ]
+}

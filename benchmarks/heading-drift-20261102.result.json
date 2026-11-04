@@ -1,0 +1,153 @@
+{
+ "schema": "heading_drift/2",
+ "measured_at": "2026-11-02T18:30:00+08:00",
+ "purpose": "how far off the line does each policy end up after walking 10 m straight, and how much does that vary by seed",
+ "protocol": {
+  "command": [
+   0.5,
+   0.0,
+   0.0
+  ],
+  "distance_m": 10.0,
+  "physics_hz": 200,
+  "control_hz": 50,
+  "terrain_seed": 0,
+  "seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "start": "rest, at the terrain origin",
+  "measured_fields": [
+   "root_link_pos_w",
+   "heading_w"
+  ],
+  "max_control_steps": 12000,
+  "clock": "control steps at 50 Hz (physics 200 Hz, decimation 4, 20 ms per control step)",
+  "measurement_point": "the first control step whose ground track reaches 10 m"
+ },
+ "policies": {
+  "base": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_9999.pt",
+  "stairs-ext": "logs/jumper/jumper.tripod/2026-11-01_06-23-09/model_12997.pt",
+  "rough5-bext": "logs/jumper/jumper.tripod/2026-11-01_02-01-24/model_5998.pt",
+  "mix": "logs/jumper/jumper.tripod/2026-11-01_11-00-10/model_10998.pt"
+ },
+ "grounds": {
+  "pave": "1 m paving, --terrain --terrain-roughness-mm 0",
+  "rough_50mm": "roughness 50 mm, --terrain-roughness-mm 50"
+ },
+ "rows": [
+  {
+   "policy": "base",
+   "ground": "pave",
+   "n": 5,
+   "cross_median": -1.843160131445068,
+   "cross_min": -3.8748898068801756,
+   "cross_max": 0.22858666756986956,
+   "heading_median_deg": 19.641254170131685,
+   "heading_min_deg": -1.8194605926275254,
+   "heading_max_deg": 44.351490649044514,
+   "seeds_reached": 5,
+   "control_steps_to_10m_median": 1060
+  },
+  {
+   "policy": "base",
+   "ground": "rough_50mm",
+   "n": 5,
+   "cross_median": -2.2649574935310177,
+   "cross_min": -9.366541344698497,
+   "cross_max": 8.88714377282048,
+   "heading_median_deg": 29.46400544478893,
+   "heading_min_deg": -92.24531204799861,
+   "heading_max_deg": 93.46850843882561,
+   "seeds_reached": 5,
+   "control_steps_to_10m_median": 1790
+  },
+  {
+   "policy": "stairs-ext",
+   "ground": "pave",
+   "n": 5,
+   "cross_median": -1.3003372141430911,
+   "cross_min": -1.6952790647010887,
+   "cross_max": -0.36969744443600927,
+   "heading_median_deg": 14.309374371099471,
+   "heading_min_deg": 4.440478321909905,
+   "heading_max_deg": 19.2747529184103,
+   "seeds_reached": 5,
+   "control_steps_to_10m_median": 1023
+  },
+  {
+   "policy": "stairs-ext",
+   "ground": "rough_50mm",
+   "n": 5,
+   "cross_median": -0.8712442115934858,
+   "cross_min": -5.949783882764753,
+   "cross_max": 0.6514564475986133,
+   "heading_median_deg": 19.4848974237442,
+   "heading_min_deg": -7.740355625724792,
+   "heading_max_deg": 58.44019177443981,
+   "seeds_reached": 5,
+   "control_steps_to_10m_median": 1108
+  },
+  {
+   "policy": "rough5-bext",
+   "ground": "pave",
+   "n": 5,
+   "cross_median": -0.5616062437956457,
+   "cross_min": -2.692952161124289,
+   "cross_max": 1.3185199361154214,
+   "heading_median_deg": 5.067909968698025,
+   "heading_min_deg": -14.88492388240099,
+   "heading_max_deg": 33.46928444774151,
+   "seeds_reached": 5,
+   "control_steps_to_10m_median": 1034
+  },
+  {
+   "policy": "rough5-bext",
+   "ground": "rough_50mm",
+   "n": 5,
+   "cross_median": -1.2657984790901171,
+   "cross_min": -6.209163923530424,
+   "cross_max": 8.706372577464307,
+   "heading_median_deg": 11.740436852860451,
+   "heading_min_deg": -85.67566620565653,
+   "heading_max_deg": 37.10756359498501,
+   "seeds_reached": 4,
+   "control_steps_to_10m_median": 1347
+  },
+  {
+   "policy": "mix",
+   "ground": "pave",
+   "n": 5,
+   "cross_median": 0.9356521722505481,
+   "cross_min": -0.2844416441890396,
+   "cross_max": 1.2735094958227218,
+   "heading_median_deg": -11.12823994846344,
+   "heading_min_deg": -13.822128992056847,
+   "heading_max_deg": 5.955244066715241,
+   "seeds_reached": 5,
+   "control_steps_to_10m_median": 1020
+  },
+  {
+   "policy": "mix",
+   "ground": "rough_50mm",
+   "n": 5,
+   "cross_median": 1.6607974522514448,
+   "cross_min": -1.1606342262603326,
+   "cross_max": 10.002154350165798,
+   "heading_median_deg": -10.714548902893066,
+   "heading_min_deg": -75.91573926081986,
+   "heading_max_deg": 14.663881806349755,
+   "seeds_reached": 5,
+   "control_steps_to_10m_median": 1209
+  }
+ ],
+ "notes": [
+  "A first attempt integrated the archived mean yaw rate (psi_dot * L^2 / (2 vx)) and predicted 1.20 m for the same cell that measures 0.115 m: the mean rate carries the wobble, and the wobble cancels in the trajectory but not in the integral. Displacement has to be walked, not integrated.",
+  "cross_median / cross_min / cross_max are the cross-track offset along the start heading's left axis, in metres, signed; heading_median_deg / heading_min_deg / heading_max_deg are the heading change wrapped to +-180 degrees.",
+  "control_steps_to_10m_median counts control steps (50 Hz) from rest to the 10 m track, over the seeds that reached it; seeds_reached of n says how many did. rough5-bext on rough_50mm reached it in 4 of 5.",
+  "This is schema heading_drift/2: against /1 the row keys reached, steps_median and max_steps were renamed and the ground label \"50\" became rough_50mm."
+ ]
+}

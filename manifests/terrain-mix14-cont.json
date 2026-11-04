@@ -1,0 +1,19 @@
+{
+  "runs": [
+    {
+      "name": "Mix14-cont-3000",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 3000,
+      "num_envs": 4096,
+      "start_from": "logs/jumper/jumper.tripod/2026-11-03_14-54-19",
+      "args": [
+        "--terrain",
+        "--terrain-roughness-mm=5",
+        "--terrain-steps-m=0.03",
+        "--terrain-seed=0",
+        "--terrain-stairs-share=0.25"
+      ]
+    }
+  ]
+}

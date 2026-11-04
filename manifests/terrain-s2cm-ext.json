@@ -1,0 +1,13 @@
+{
+  "runs": [
+    {
+      "name": "S2cm-ext-2000",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 2000,
+      "num_envs": 4096,
+      "args": ["--terrain", "--terrain-steps-m=0.02", "--terrain-seed=0"],
+      "start_from": "logs/jumper/jumper.tripod/2026-11-01_00-57-14"
+    }
+  ]
+}

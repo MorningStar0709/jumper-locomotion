@@ -1,0 +1,458 @@
+{
+  "schema": "foot_odometry/2",
+  "measured_at": "2026-11-03",
+  "question": "Can the controller know where it is from the feet alone, well enough to steer by it?",
+  "protocol": {
+    "policies": {
+      "base": "2026-10-30_06-20-54/model_9999.pt",
+      "mix1500": "2026-11-02_22-29-02/model_12996.pt"
+    },
+    "grounds": {
+      "pave": "1 m paving, --terrain-roughness-mm 0",
+      "rough_50mm": "--terrain-roughness-mm 50"
+    },
+    "terrain_seed": 0,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "command": "0.5 0 0",
+    "distance_m": 10,
+    "physics": "timestep 0.005 s, decimation to hold the task's 50 Hz control period",
+    "arms": [
+      "world/mean",
+      "world/robust",
+      "body/mean",
+      "body/median",
+      "body/robust"
+    ],
+    "design": "every arm is integrated inside the same walk, so a comparison is paired by construction; the earlier per-arm sweep was not, and its table is withdrawn",
+    "precision": "metres, 6 decimals; error_m is odo_cross_m - true_cross_m and is re-derivable from the same row to 1e-6"
+  },
+  "rows": [
+    {
+      "policy": "base",
+      "ground": "rough_50mm",
+      "seed": 0,
+      "control_steps": 1731,
+      "travelled_m": 10.006,
+      "true_cross_m": -5.922369,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": 0.363961,
+          "error_m": 6.28633
+        },
+        "world/robust": {
+          "odo_cross_m": -0.151053,
+          "error_m": 5.771316
+        },
+        "body/mean": {
+          "odo_cross_m": -5.408938,
+          "error_m": 0.513431
+        },
+        "body/median": {
+          "odo_cross_m": -6.233441,
+          "error_m": -0.311072
+        },
+        "body/robust": {
+          "odo_cross_m": -6.325371,
+          "error_m": -0.403002
+        }
+      }
+    },
+    {
+      "policy": "base",
+      "ground": "rough_50mm",
+      "seed": 1,
+      "control_steps": 2003,
+      "travelled_m": 10.003,
+      "true_cross_m": -9.345819,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": 0.225119,
+          "error_m": 9.570938
+        },
+        "world/robust": {
+          "odo_cross_m": -0.026163,
+          "error_m": 9.319656
+        },
+        "body/mean": {
+          "odo_cross_m": -8.914794,
+          "error_m": 0.431025
+        },
+        "body/median": {
+          "odo_cross_m": -9.659114,
+          "error_m": -0.313295
+        },
+        "body/robust": {
+          "odo_cross_m": -9.752639,
+          "error_m": -0.40682
+        }
+      }
+    },
+    {
+      "policy": "base",
+      "ground": "rough_50mm",
+      "seed": 2,
+      "control_steps": 3285,
+      "travelled_m": 10.002,
+      "true_cross_m": -9.919322,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": 0.092649,
+          "error_m": 10.011971
+        },
+        "world/robust": {
+          "odo_cross_m": -0.275931,
+          "error_m": 9.643391
+        },
+        "body/mean": {
+          "odo_cross_m": -9.384166,
+          "error_m": 0.535156
+        },
+        "body/median": {
+          "odo_cross_m": -10.312647,
+          "error_m": -0.393325
+        },
+        "body/robust": {
+          "odo_cross_m": -10.431278,
+          "error_m": -0.511956
+        }
+      }
+    },
+    {
+      "policy": "base",
+      "ground": "pave",
+      "seed": 0,
+      "control_steps": 1060,
+      "travelled_m": 10.008,
+      "true_cross_m": -0.111911,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": 0.096754,
+          "error_m": 0.208665
+        },
+        "world/robust": {
+          "odo_cross_m": 0.057208,
+          "error_m": 0.169119
+        },
+        "body/mean": {
+          "odo_cross_m": 0.008672,
+          "error_m": 0.120583
+        },
+        "body/median": {
+          "odo_cross_m": 0.018804,
+          "error_m": 0.130715
+        },
+        "body/robust": {
+          "odo_cross_m": 0.018614,
+          "error_m": 0.130525
+        }
+      }
+    },
+    {
+      "policy": "base",
+      "ground": "pave",
+      "seed": 1,
+      "control_steps": 1052,
+      "travelled_m": 10.002,
+      "true_cross_m": 1.247551,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": -0.054003,
+          "error_m": -1.301554
+        },
+        "world/robust": {
+          "odo_cross_m": -0.035762,
+          "error_m": -1.283313
+        },
+        "body/mean": {
+          "odo_cross_m": 1.04263,
+          "error_m": -0.204921
+        },
+        "body/median": {
+          "odo_cross_m": 1.072186,
+          "error_m": -0.175365
+        },
+        "body/robust": {
+          "odo_cross_m": 1.072186,
+          "error_m": -0.175365
+        }
+      }
+    },
+    {
+      "policy": "base",
+      "ground": "pave",
+      "seed": 2,
+      "control_steps": 1051,
+      "travelled_m": 10.003,
+      "true_cross_m": 1.812792,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": -0.126386,
+          "error_m": -1.939178
+        },
+        "world/robust": {
+          "odo_cross_m": -0.15044,
+          "error_m": -1.963232
+        },
+        "body/mean": {
+          "odo_cross_m": 1.464749,
+          "error_m": -0.348043
+        },
+        "body/median": {
+          "odo_cross_m": 1.438256,
+          "error_m": -0.374536
+        },
+        "body/robust": {
+          "odo_cross_m": 1.438243,
+          "error_m": -0.374549
+        }
+      }
+    },
+    {
+      "policy": "mix1500",
+      "ground": "rough_50mm",
+      "seed": 0,
+      "control_steps": 1262,
+      "travelled_m": 10.007,
+      "true_cross_m": -0.497278,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": -0.026097,
+          "error_m": 0.471181
+        },
+        "world/robust": {
+          "odo_cross_m": -0.082017,
+          "error_m": 0.415261
+        },
+        "body/mean": {
+          "odo_cross_m": -0.519342,
+          "error_m": -0.022064
+        },
+        "body/median": {
+          "odo_cross_m": -0.503556,
+          "error_m": -0.006278
+        },
+        "body/robust": {
+          "odo_cross_m": -0.501443,
+          "error_m": -0.004165
+        }
+      }
+    },
+    {
+      "policy": "mix1500",
+      "ground": "rough_50mm",
+      "seed": 1,
+      "control_steps": 1393,
+      "travelled_m": 10.0,
+      "true_cross_m": 1.431026,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": 0.013182,
+          "error_m": -1.417844
+        },
+        "world/robust": {
+          "odo_cross_m": 0.031494,
+          "error_m": -1.399532
+        },
+        "body/mean": {
+          "odo_cross_m": 1.533549,
+          "error_m": 0.102523
+        },
+        "body/median": {
+          "odo_cross_m": 1.479129,
+          "error_m": 0.048103
+        },
+        "body/robust": {
+          "odo_cross_m": 1.482771,
+          "error_m": 0.051745
+        }
+      }
+    },
+    {
+      "policy": "mix1500",
+      "ground": "rough_50mm",
+      "seed": 2,
+      "control_steps": 1176,
+      "travelled_m": 10.001,
+      "true_cross_m": 0.528118,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": -0.016042,
+          "error_m": -0.54416
+        },
+        "world/robust": {
+          "odo_cross_m": -0.057993,
+          "error_m": -0.586111
+        },
+        "body/mean": {
+          "odo_cross_m": 0.49099,
+          "error_m": -0.037128
+        },
+        "body/median": {
+          "odo_cross_m": 0.448547,
+          "error_m": -0.079571
+        },
+        "body/robust": {
+          "odo_cross_m": 0.451133,
+          "error_m": -0.076985
+        }
+      }
+    },
+    {
+      "policy": "mix1500",
+      "ground": "pave",
+      "seed": 0,
+      "control_steps": 1083,
+      "travelled_m": 10.003,
+      "true_cross_m": 0.14257,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": -0.225637,
+          "error_m": -0.368207
+        },
+        "world/robust": {
+          "odo_cross_m": -0.257796,
+          "error_m": -0.400366
+        },
+        "body/mean": {
+          "odo_cross_m": -0.079379,
+          "error_m": -0.221949
+        },
+        "body/median": {
+          "odo_cross_m": -0.064544,
+          "error_m": -0.207114
+        },
+        "body/robust": {
+          "odo_cross_m": -0.061868,
+          "error_m": -0.204438
+        }
+      }
+    },
+    {
+      "policy": "mix1500",
+      "ground": "pave",
+      "seed": 1,
+      "control_steps": 1094,
+      "travelled_m": 10.009,
+      "true_cross_m": -0.124641,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": 0.032418,
+          "error_m": 0.157059
+        },
+        "world/robust": {
+          "odo_cross_m": 0.023497,
+          "error_m": 0.148138
+        },
+        "body/mean": {
+          "odo_cross_m": -0.0896,
+          "error_m": 0.035041
+        },
+        "body/median": {
+          "odo_cross_m": -0.061277,
+          "error_m": 0.063364
+        },
+        "body/robust": {
+          "odo_cross_m": -0.050132,
+          "error_m": 0.074509
+        }
+      }
+    },
+    {
+      "policy": "mix1500",
+      "ground": "pave",
+      "seed": 2,
+      "control_steps": 1100,
+      "travelled_m": 10.008,
+      "true_cross_m": 0.910656,
+      "arms": {
+        "world/mean": {
+          "odo_cross_m": -0.114605,
+          "error_m": -1.025261
+        },
+        "world/robust": {
+          "odo_cross_m": -0.173978,
+          "error_m": -1.084634
+        },
+        "body/mean": {
+          "odo_cross_m": 0.695039,
+          "error_m": -0.215617
+        },
+        "body/median": {
+          "odo_cross_m": 0.682365,
+          "error_m": -0.228291
+        },
+        "body/robust": {
+          "odo_cross_m": 0.665126,
+          "error_m": -0.24553
+        }
+      }
+    }
+  ],
+  "summary": [
+    {
+      "ground": "pave",
+      "seed_runs": 6,
+      "truth_abs_median_m": 0.5266,
+      "arms": {
+        "world/mean": {
+          "error_abs_median_m": 0.6967,
+          "error_abs_max_m": 1.939
+        },
+        "world/robust": {
+          "error_abs_median_m": 0.7425,
+          "error_abs_max_m": 1.963
+        },
+        "body/mean": {
+          "error_abs_median_m": 0.2103,
+          "error_abs_max_m": 0.348
+        },
+        "body/median": {
+          "error_abs_median_m": 0.1912,
+          "error_abs_max_m": 0.375
+        },
+        "body/robust": {
+          "error_abs_median_m": 0.1899,
+          "error_abs_max_m": 0.375
+        }
+      }
+    },
+    {
+      "ground": "rough_50mm",
+      "seed_runs": 6,
+      "truth_abs_median_m": 3.6767,
+      "arms": {
+        "world/mean": {
+          "error_abs_median_m": 3.8521,
+          "error_abs_max_m": 10.012
+        },
+        "world/robust": {
+          "error_abs_median_m": 3.5854,
+          "error_abs_max_m": 9.643
+        },
+        "body/mean": {
+          "error_abs_median_m": 0.2668,
+          "error_abs_max_m": 0.535
+        },
+        "body/median": {
+          "error_abs_median_m": 0.1953,
+          "error_abs_max_m": 0.393
+        },
+        "body/robust": {
+          "error_abs_median_m": 0.24,
+          "error_abs_max_m": 0.512
+        }
+      }
+    }
+  ],
+  "notes": [
+    "The world-frame arms are degenerate by construction: a planted foot does not move in the world, so their estimate stays near the start and their error is close to minus the truth. They are kept as the measurement of that degeneracy, not as a candidate.",
+    "Magnitude, not equality: world/mean error |median| is 0.70 m on paving and 3.85 m on 50 mm against truth |median| 0.53 m and 3.68 m. The small gap is the estimate itself drifting (up to 0.36 m in one walk), so |error| = |odo - true| is not exactly |true|.",
+    "The body-frame arms estimate the same quantity a firmware would: mean displacement of the feet planted at both ends of the step, expressed in the body frame and rotated by the IMU heading.",
+    "Body-frame |error| median is 0.19-0.27 m over 10 m on both grounds, the same order as the path scale the heading loop already achieves; it is not a claim that path tracking will work, only that the pose it needs exists at this accuracy.",
+    "Replay in this harness is not bit-reproducible across processes (the same policy, ground and seed replayed twice differ, and scripts/play.py does too), which is why the arms share one walk instead of being paired by seed."
+  ]
+}

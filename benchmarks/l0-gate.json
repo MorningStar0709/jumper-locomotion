@@ -1,0 +1,26 @@
+{
+  "task": "jumper.tripod",
+  "steps": 6000,
+  "seed": 0,
+  "note": "L0 gate: the policy trained with the terrain switch on (flat ground) against the checkpoint it was resumed from, on the same seed. Both are measured on the playback ground the baselines use, so the only difference is the iterations spent on the new pass. Checkpoint numbers continue across a resume: 9999 + 499 = model_10498 after 500 iterations (2026-10-31_10-45-37), and 9999 + 1498 = model_11497 after 1500 (2026-10-31_11-12-58, the one measured here, because at 500 the curve was still moving). The earlier 2026-10-30_20-42-36 run stood on a single 6 m box, which the review showed was a contact artefact, not a flat floor.",
+  "cases": [
+    {
+      "name": "straight",
+      "command": [0.5, 0.0, 0.0],
+      "args": ["--physics-hz=200"],
+      "checkpoints": [
+        {"seed": 2, "path": "logs/jumper/jumper.tripod/2026-10-31_11-12-58/model_11497.pt"},
+        {"seed": 2, "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_9999.pt"}
+      ]
+    },
+    {
+      "name": "turn",
+      "command": [0.0, 0.0, 0.75],
+      "args": ["--physics-hz=200"],
+      "checkpoints": [
+        {"seed": 2, "path": "logs/jumper/jumper.tripod/2026-10-31_11-12-58/model_11497.pt"},
+        {"seed": 2, "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_9999.pt"}
+      ]
+    }
+  ]
+}

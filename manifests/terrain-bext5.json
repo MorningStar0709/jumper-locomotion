@@ -1,0 +1,13 @@
+{
+  "runs": [
+    {
+      "name": "Bext5-3000",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 3000,
+      "num_envs": 4096,
+      "args": ["--terrain", "--terrain-roughness-mm=5", "--terrain-seed=0"],
+      "start_from": "logs/jumper/jumper.tripod/2026-10-30_22-10-37"
+    }
+  ]
+}

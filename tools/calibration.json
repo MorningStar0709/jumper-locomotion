@@ -1,0 +1,8 @@
+{
+  "jumper.tripod": {
+    "overhead_mib": 3636,
+    "per_env_mib": 2.354,
+    "measured": "2026-11-01",
+    "method": "warp + cuda, nconmax 256 / njmax 512, flat ground, peak of nvidia-smi memory.used while the run was alive (long_run's peak_mem_mib). Two points: 2048 envs 8457 MiB (run 2026-11-01_20-20-53) and 4096 envs 13277 MiB (scenes/rough.py, measured 2026-11-01). Fit: fixed 3636 MiB + 2.354 MiB per env. The old single point (960 + 3.01/env) under-predicted 4096 by 3.8 GB because it kept a 2026-10-29 overhead that belonged to a different nconmax."
+  }
+}

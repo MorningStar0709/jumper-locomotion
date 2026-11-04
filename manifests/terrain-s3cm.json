@@ -1,0 +1,17 @@
+{
+  "runs": [
+    {
+      "name": "S3cm-1000",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 1000,
+      "num_envs": 4096,
+      "start_from": "logs/jumper/jumper.tripod/2026-10-30_06-20-54",
+      "args": [
+        "--terrain",
+        "--terrain-steps-m=0.03",
+        "--terrain-seed=0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "runs": [
+    {
+      "name": "S4cm-stallgate-500",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 500,
+      "num_envs": 4096,
+      "start_from": "logs/jumper/jumper.tripod/2026-11-01_20-22-20",
+      "args": ["--terrain", "--terrain-steps-m=0.04", "--terrain-seed=0"]
+    }
+  ]
+}

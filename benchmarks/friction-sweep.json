@@ -1,0 +1,107 @@
+{
+  "task": "jumper.tripod",
+  "steps": 1000,
+  "seed": 0,
+  "cases": [
+    {
+      "name": "mu05",
+      "command": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "set": [
+        "events.foot_friction.params.ranges=(0.5,0.5)"
+      ],
+      "checkpoints": [
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_6000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_6000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_6000.pt"
+        }
+      ]
+    },
+    {
+      "name": "mu08",
+      "command": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "set": [
+        "events.foot_friction.params.ranges=(0.8,0.8)"
+      ],
+      "checkpoints": [
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_6000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_6000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_6000.pt"
+        }
+      ]
+    },
+    {
+      "name": "mu12",
+      "command": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "set": [
+        "events.foot_friction.params.ranges=(1.2,1.2)"
+      ],
+      "checkpoints": [
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_6000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_6000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_6000.pt"
+        }
+      ]
+    },
+    {
+      "name": "mu15",
+      "command": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "set": [
+        "events.foot_friction.params.ranges=(1.5,1.5)"
+      ],
+      "checkpoints": [
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_6000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_6000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_6000.pt"
+        }
+      ]
+    }
+  ]
+}

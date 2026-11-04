@@ -1,0 +1,35 @@
+{
+  "runs": [
+    {
+      "name": "B-scratch-terrain5",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 3000,
+      "num_envs": 4096,
+      "args": ["--terrain", "--terrain-roughness-mm=5"]
+    },
+    {
+      "name": "A-scratch-plane",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 3000,
+      "num_envs": 4096
+    },
+    {
+      "name": "C-scratch-terrain10",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 3000,
+      "num_envs": 4096,
+      "args": ["--terrain", "--terrain-roughness-mm=10"]
+    },
+    {
+      "name": "D-resume-plane",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 3000,
+      "num_envs": 4096,
+      "start_from": "<repo>/logs/jumper/jumper.tripod/2026-10-30_06-20-54"
+    }
+  ]
+}

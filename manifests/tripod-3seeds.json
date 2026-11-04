@@ -1,0 +1,25 @@
+{
+  "runs": [
+    {
+      "name": "seed0",
+      "task": "jumper.tripod",
+      "seed": 0,
+      "iterations": 10000,
+      "num_envs": 4096
+    },
+    {
+      "name": "seed1",
+      "task": "jumper.tripod",
+      "seed": 1,
+      "iterations": 10000,
+      "num_envs": 4096
+    },
+    {
+      "name": "seed2",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 10000,
+      "num_envs": 4096
+    }
+  ]
+}

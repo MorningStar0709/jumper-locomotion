@@ -1,0 +1,102 @@
+{
+ "schema": "stairs_edge/1",
+ "measured_at": "2026-11-02T16:05:00+08:00",
+ "purpose": "replay-only walkability of the deepest climber along the staircase heights; shows that the walkable curve is smooth while the trainable boundary sits earlier",
+ "policy": "logs/jumper/jumper.tripod/2026-11-01_20-22-20/model_11497.pt (S3cm-from-2cm-500)",
+ "protocol": {
+  "command": [
+   0.5,
+   0.0,
+   0.0
+  ],
+  "steps": 6000,
+  "physics_hz": 200,
+  "terrain_seed": 0,
+  "seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "tread_m": 0.25,
+  "flat_reference": "same policy, 1 m paving (--terrain-roughness-mm 0), seeds 0-2"
+ },
+ "flat": {
+  "ground": "pave",
+  "n": 3,
+  "ratio_median": 0.9472288272210663,
+  "ratio_min": 0.9439102861293966,
+  "ratio_max": 0.9513465132869882,
+  "mae_median": 0.02841107520444375,
+  "stall_median": 0.0,
+  "stall_max": 0.0,
+  "resets_median": 2
+ },
+ "rows": [
+  {
+   "ground": "S0.03",
+   "n": 7,
+   "ratio_median": 0.8304182198978545,
+   "ratio_min": 0.8146750929108401,
+   "ratio_max": 0.8479181820458256,
+   "mae_median": 0.08616971770021506,
+   "stall_median": null,
+   "stall_max": null,
+   "resets_median": 2,
+   "multiple_of_flat": 3.032962219139715
+  },
+  {
+   "ground": "S0.0325",
+   "n": 5,
+   "ratio_median": 0.8341247230742743,
+   "ratio_min": 0.8254650039456684,
+   "ratio_max": 0.8412885106281726,
+   "mae_median": 0.08390192606240005,
+   "stall_median": 0.0,
+   "stall_max": 0.0,
+   "resets_median": 2,
+   "multiple_of_flat": 2.9531415287400673
+  },
+  {
+   "ground": "S0.035",
+   "n": 5,
+   "ratio_median": 0.81437928316057,
+   "ratio_min": 0.7882971720483805,
+   "ratio_max": 0.8235253819554317,
+   "mae_median": 0.09339369943883442,
+   "stall_median": 0.0,
+   "stall_max": 0.0,
+   "resets_median": 1,
+   "multiple_of_flat": 3.2872286165441142
+  },
+  {
+   "ground": "S0.0375",
+   "n": 5,
+   "ratio_median": 0.7931616799418924,
+   "ratio_min": 0.7582486603399893,
+   "ratio_max": 0.8212759666764902,
+   "mae_median": 0.10441921780950628,
+   "stall_median": 0.0,
+   "stall_max": 0.0,
+   "resets_median": 2,
+   "multiple_of_flat": 3.6752997575105555
+  },
+  {
+   "ground": "S0.04",
+   "n": 7,
+   "ratio_median": 0.7453413525705554,
+   "ratio_min": 0.7317189397512351,
+   "ratio_max": 0.7691202057633567,
+   "mae_median": 0.12833821349279717,
+   "stall_median": null,
+   "stall_max": null,
+   "resets_median": 1,
+   "multiple_of_flat": 4.517189601917069
+  }
+ ],
+ "notes": [
+  "S0.03 and S0.04 reuse the 2026-11-01 cells, which predate stalled_fraction; S0.040 with seeds 0-2 re-measures 4 cm under a fresh label to fill that field.",
+  "ratio is the median of actual_velocity_mean[0] / 0.5."
+ ]
+}

@@ -1,0 +1,250 @@
+{
+ "schema": "stairs_rung/1",
+ "measured_at": "2026-11-02T18:15:00+08:00",
+ "purpose": "the 3.5 cm rung, trained from the 3 cm arm: did it train, and did it keep the 3 cm gait?",
+ "run": {
+  "name": "S3cm5-from-3cm-500",
+  "run_dir": "logs/jumper/jumper.tripod/2026-11-02_17-14-27",
+  "start_from": "logs/jumper/jumper.tripod/2026-11-01_20-22-20",
+  "iterations": 500,
+  "num_envs": 4096,
+  "seed": 2,
+  "elapsed_s": 711,
+  "checkpoint": "model_11996.pt",
+  "curve": {
+   "entropy": [
+    11.681,
+    14.582
+   ],
+   "mean_std": [
+    0.439,
+    0.506
+   ],
+   "mean_reward": [
+    42.519,
+    37.321
+   ],
+   "stalled_terminations": [
+    0.286,
+    1.467
+   ]
+  }
+ },
+ "protocol": {
+  "command": {
+   "straight": [
+    0.5,
+    0.0,
+    0.0
+   ],
+   "turn": [
+    0.0,
+    0.0,
+    0.75
+   ]
+  },
+  "steps": 6000,
+  "physics_hz": 200,
+  "terrain_seed": 0,
+  "seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "tread_m": 0.25,
+  "grounds": [
+   "S0.035",
+   "S0.03",
+   "R0"
+  ]
+ },
+ "verdict": "failed: 0.061 m/s on its own rung (63 % stalled) while the parent walks 0.407 there, and the 3 cm rung fell from 0.414 to 0.220 \u2014 the trainable boundary sits between 3.0 and 3.5 cm",
+ "cells": [
+  {
+   "ground": "S0.035",
+   "command": "straight",
+   "vx_mae": 0.4385982422611754,
+   "actual_vx": 0.061411033870613516,
+   "ratio": 0.12282206774122703,
+   "yaw_mae": 0.23551728165933067,
+   "net_bias_mrad": -1.5494945260021873,
+   "stalled_fraction": 0.6303333333333333,
+   "resets": 0,
+   "tag": "arm"
+  },
+  {
+   "ground": "S0.035",
+   "command": "straight",
+   "vx_mae": 0.444040590046711,
+   "actual_vx": 0.05595940995328905,
+   "ratio": 0.1119188199065781,
+   "yaw_mae": 0.5941152158646971,
+   "net_bias_mrad": 3.305116949234313,
+   "stalled_fraction": 0.21783333333333332,
+   "resets": 0,
+   "tag": "base"
+  },
+  {
+   "ground": "S0.035",
+   "command": "straight",
+   "vx_mae": 0.09339369943883442,
+   "actual_vx": 0.407189641580285,
+   "ratio": 0.81437928316057,
+   "yaw_mae": 0.22087961037223397,
+   "net_bias_mrad": 6.411231098377971,
+   "stalled_fraction": 0.0,
+   "resets": 1,
+   "tag": "parent"
+  },
+  {
+   "ground": "S0.035",
+   "command": "turn",
+   "vx_mae": 0.015077500928336424,
+   "actual_vx": -0.0027646126178357613,
+   "ratio": -0.005529225235671523,
+   "yaw_mae": 0.11582541316747666,
+   "net_bias_mrad": -96.6188430388768,
+   "stalled_fraction": 0.0,
+   "resets": 0,
+   "tag": "arm"
+  },
+  {
+   "ground": "S0.035",
+   "command": "turn",
+   "vx_mae": 0.01186843586450171,
+   "actual_vx": -0.010617918123559018,
+   "ratio": -0.021235836247118035,
+   "yaw_mae": 0.0775831627001365,
+   "net_bias_mrad": -73.46316404640673,
+   "stalled_fraction": 0.0,
+   "resets": 0,
+   "tag": "base"
+  },
+  {
+   "ground": "S0.03",
+   "command": "straight",
+   "vx_mae": 0.2804280406040731,
+   "actual_vx": 0.21957195939592689,
+   "ratio": 0.43914391879185377,
+   "yaw_mae": 0.24075578673993975,
+   "net_bias_mrad": -1.7307690267282976,
+   "stalled_fraction": 0.026333333333333334,
+   "resets": 0,
+   "tag": "arm"
+  },
+  {
+   "ground": "S0.03",
+   "command": "straight",
+   "vx_mae": 0.24066350763868924,
+   "actual_vx": 0.25948908720697017,
+   "ratio": 0.5189781744139403,
+   "yaw_mae": 0.30992028480442635,
+   "net_bias_mrad": 0.22410579583817042,
+   "stalled_fraction": 0.0,
+   "resets": 1,
+   "tag": "base"
+  },
+  {
+   "ground": "S0.03",
+   "command": "straight",
+   "vx_mae": 0.08689441752425796,
+   "actual_vx": 0.4142132392009129,
+   "ratio": 0.8284264784018258,
+   "yaw_mae": 0.20550092428529582,
+   "net_bias_mrad": 8.25123469473643,
+   "stalled_fraction": 0.0,
+   "resets": 2,
+   "tag": "parent"
+  },
+  {
+   "ground": "S0.03",
+   "command": "turn",
+   "vx_mae": 0.015050856100521893,
+   "actual_vx": -0.002650005119225777,
+   "ratio": -0.005300010238451554,
+   "yaw_mae": 0.11596864840139945,
+   "net_bias_mrad": -96.69793793310721,
+   "stalled_fraction": 0.0,
+   "resets": 0,
+   "tag": "arm"
+  },
+  {
+   "ground": "S0.03",
+   "command": "turn",
+   "vx_mae": 0.011864636511756241,
+   "actual_vx": -0.010591147618463765,
+   "ratio": -0.02118229523692753,
+   "yaw_mae": 0.07746228736142317,
+   "net_bias_mrad": -73.3360586712758,
+   "stalled_fraction": 0.0,
+   "resets": 0,
+   "tag": "base"
+  },
+  {
+   "ground": "S0.03",
+   "command": "turn",
+   "vx_mae": 0.013124298227213027,
+   "actual_vx": 0.005870773468969977,
+   "ratio": 0.011741546937939953,
+   "yaw_mae": 0.09137902519355218,
+   "net_bias_mrad": -41.599134594202056,
+   "stalled_fraction": 0.0,
+   "resets": 0,
+   "tag": "parent"
+  },
+  {
+   "ground": "R0",
+   "command": "straight",
+   "vx_mae": 0.03466027120965036,
+   "actual_vx": 0.466126481779738,
+   "ratio": 0.932252963559476,
+   "yaw_mae": 0.13948112788964045,
+   "net_bias_mrad": -0.6607980454377215,
+   "stalled_fraction": 0.0,
+   "resets": 2,
+   "tag": "arm"
+  },
+  {
+   "ground": "R0",
+   "command": "straight",
+   "vx_mae": 0.031411551873976935,
+   "actual_vx": 0.4696180885323833,
+   "ratio": 0.9392361770647666,
+   "yaw_mae": 0.08079388371385306,
+   "net_bias_mrad": 10.824674861991548,
+   "stalled_fraction": 0.0,
+   "resets": 2,
+   "tag": "base"
+  },
+  {
+   "ground": "R0",
+   "command": "turn",
+   "vx_mae": 0.015050616832964806,
+   "actual_vx": -0.002693348922214985,
+   "ratio": -0.00538669784442997,
+   "yaw_mae": 0.11602616609384617,
+   "net_bias_mrad": -96.87544986854002,
+   "stalled_fraction": 0.0,
+   "resets": 0,
+   "tag": "arm"
+  },
+  {
+   "ground": "R0",
+   "command": "turn",
+   "vx_mae": 0.011894851503484611,
+   "actual_vx": -0.010644012301351874,
+   "ratio": -0.021288024602703747,
+   "yaw_mae": 0.07715155112743377,
+   "net_bias_mrad": -72.68704166014994,
+   "stalled_fraction": 0.0,
+   "resets": 0,
+   "tag": "base"
+  }
+ ],
+ "notes": [
+  "turn reads the same on every ground (\u00b10.1 mrad/s, MAE 0.015): turning in place never climbs, so the arm stays on the spawn floor \u2014 the staircase ground is only measured under straight commands.",
+  "ratio is actual_vx / 0.5; net bias is (actual yaw \u2212 commanded yaw) in mrad/s."
+ ]
+}

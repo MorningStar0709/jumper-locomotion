@@ -1,0 +1,7 @@
+{
+  "runs": [
+    {"name": "delay-seed0", "task": "jumper.tripod", "seed": 0, "iterations": 3000, "num_envs": 4096, "args": ["--delay"]},
+    {"name": "delay-seed1", "task": "jumper.tripod", "seed": 1, "iterations": 3000, "num_envs": 4096, "args": ["--delay"]},
+    {"name": "delay-seed2", "task": "jumper.tripod", "seed": 2, "iterations": 3000, "num_envs": 4096, "args": ["--delay"]}
+  ]
+}

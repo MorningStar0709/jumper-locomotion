@@ -1,0 +1,13 @@
+{
+  "runs": [
+    {
+      "name": "Yaw5-S2cm-1000",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 1000,
+      "num_envs": 4096,
+      "args": ["--terrain", "--terrain-steps-m=0.02", "--terrain-seed=0", "--yaw-weight=5.0"],
+      "start_from": "logs/jumper/jumper.tripod/2026-10-30_06-20-54"
+    }
+  ]
+}

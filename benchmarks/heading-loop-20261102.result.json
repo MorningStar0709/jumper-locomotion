@@ -1,0 +1,358 @@
+{
+ "schema": "heading_loop/3",
+ "measured_at": "2026-11-02T19:20:00+08:00",
+ "purpose": "is the 10 m cross-track a policy defect or a missing control layer, and how much of it does a command-level loop remove",
+ "grounds": {
+  "pave": "1 m paving, --terrain --terrain-roughness-mm 0",
+  "rough_50mm": "roughness 50 mm, --terrain-roughness-mm 50"
+ },
+ "protocol": {
+  "command": {
+   "vx": 0.5,
+   "vy": 0.0,
+   "wz": "clamp(kp * heading_error, +-wz_max)"
+  },
+  "control_hz": 50,
+  "physics_hz": 200,
+  "decimation": 4,
+  "terrain_seed": 0,
+  "seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "distance_m": 10.0,
+  "start": "rest, at the terrain origin",
+  "kp": 1.0,
+  "wz_max_rad_s": 0.5,
+  "measured_fields": [
+   "root_link_pos_w",
+   "heading_w"
+  ],
+  "measurement_point": "the first control step whose ground track reaches 10 m",
+  "open_loop_reference": "the same cells in benchmarks/heading-drift-20261102.result.json",
+  "clock": "control steps at 50 Hz (physics 200 Hz, decimation 4)"
+ },
+ "policies": {
+  "base": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_9999.pt",
+  "stairs-ext": "logs/jumper/jumper.tripod/2026-11-01_06-23-09/model_12997.pt",
+  "rough5-bext": "logs/jumper/jumper.tripod/2026-11-01_02-01-24/model_5998.pt",
+  "mix": "logs/jumper/jumper.tripod/2026-11-01_11-00-10/model_10998.pt"
+ },
+ "rows": [
+  {
+   "policy": "base",
+   "ground": "pave",
+   "controller": "heading hold",
+   "open_control_steps_to_10m_median": 1060,
+   "closed_control_steps_to_10m_median": 1059,
+   "closed_saturated_fraction_median": 0.0,
+   "cells_worse_closed": 0,
+   "per_seed_open_cross_m": [
+    0.229,
+    -1.206,
+    -1.843,
+    -3.218,
+    -3.875
+   ],
+   "per_seed_closed_cross_m": [
+    -0.056,
+    -0.14,
+    -0.274,
+    -0.189,
+    -0.164
+   ],
+   "n": 5,
+   "open_cross_median_abs": 1.8432,
+   "open_cross_max_abs": 3.8749,
+   "closed_cross_median_abs": 0.1637,
+   "closed_cross_max_abs": 0.2736,
+   "open_heading_median_abs_deg": 19.64,
+   "closed_heading_median_abs_deg": 1.15
+  },
+  {
+   "policy": "base",
+   "ground": "rough_50mm",
+   "controller": "heading hold",
+   "open_control_steps_to_10m_median": 1790,
+   "closed_control_steps_to_10m_median": 1600,
+   "closed_saturated_fraction_median": 0.075,
+   "cells_worse_closed": 0,
+   "per_seed_open_cross_m": [
+    8.887,
+    -3.72,
+    -9.367,
+    4.272,
+    -2.265
+   ],
+   "per_seed_closed_cross_m": [
+    1.071,
+    0.095,
+    -0.791,
+    0.096,
+    0.181
+   ],
+   "n": 5,
+   "open_cross_median_abs": 4.2724,
+   "open_cross_max_abs": 9.3665,
+   "closed_cross_median_abs": 0.1808,
+   "closed_cross_max_abs": 1.0711,
+   "open_heading_median_abs_deg": 46.02,
+   "closed_heading_median_abs_deg": 6.93
+  },
+  {
+   "policy": "stairs-ext",
+   "ground": "pave",
+   "controller": "heading hold",
+   "open_control_steps_to_10m_median": 1023,
+   "closed_control_steps_to_10m_median": 1024,
+   "closed_saturated_fraction_median": 0.0,
+   "cells_worse_closed": 0,
+   "per_seed_open_cross_m": [
+    -1.523,
+    -1.3,
+    -0.37,
+    -1.695,
+    -0.534
+   ],
+   "per_seed_closed_cross_m": [
+    -0.266,
+    -0.039,
+    0.066,
+    -0.206,
+    0.073
+   ],
+   "n": 5,
+   "open_cross_median_abs": 1.3003,
+   "open_cross_max_abs": 1.6953,
+   "closed_cross_median_abs": 0.0729,
+   "closed_cross_max_abs": 0.2663,
+   "open_heading_median_abs_deg": 14.31,
+   "closed_heading_median_abs_deg": 0.62
+  },
+  {
+   "policy": "stairs-ext",
+   "ground": "rough_50mm",
+   "controller": "heading hold",
+   "open_control_steps_to_10m_median": 1108,
+   "closed_control_steps_to_10m_median": 1104,
+   "closed_saturated_fraction_median": 0.0,
+   "cells_worse_closed": 1,
+   "per_seed_open_cross_m": [
+    -0.366,
+    0.651,
+    -0.919,
+    -5.95,
+    -0.871
+   ],
+   "per_seed_closed_cross_m": [
+    -0.401,
+    0.058,
+    -0.301,
+    -0.045,
+    0.154
+   ],
+   "n": 5,
+   "open_cross_median_abs": 0.8712,
+   "open_cross_max_abs": 5.9498,
+   "closed_cross_median_abs": 0.1536,
+   "closed_cross_max_abs": 0.4011,
+   "open_heading_median_abs_deg": 19.48,
+   "closed_heading_median_abs_deg": 0.76
+  },
+  {
+   "policy": "rough5-bext",
+   "ground": "pave",
+   "controller": "heading hold",
+   "open_control_steps_to_10m_median": 1034,
+   "closed_control_steps_to_10m_median": 1030,
+   "closed_saturated_fraction_median": 0.0,
+   "cells_worse_closed": 0,
+   "per_seed_open_cross_m": [
+    -0.562,
+    0.593,
+    1.319,
+    -2.693,
+    -1.423
+   ],
+   "per_seed_closed_cross_m": [
+    -0.093,
+    0.015,
+    0.271,
+    -0.162,
+    0.041
+   ],
+   "n": 5,
+   "open_cross_median_abs": 1.3185,
+   "open_cross_max_abs": 2.693,
+   "closed_cross_median_abs": 0.0927,
+   "closed_cross_max_abs": 0.2709,
+   "open_heading_median_abs_deg": 14.88,
+   "closed_heading_median_abs_deg": 0.83
+  },
+  {
+   "policy": "rough5-bext",
+   "ground": "rough_50mm",
+   "controller": "heading hold",
+   "open_control_steps_to_10m_median": 1347,
+   "closed_control_steps_to_10m_median": 1417,
+   "closed_saturated_fraction_median": 0.071,
+   "cells_worse_closed": 1,
+   "per_seed_open_cross_m": [
+    8.706,
+    -1.477,
+    -0.076,
+    -6.209,
+    -1.266
+   ],
+   "per_seed_closed_cross_m": [
+    2.311,
+    0.377,
+    -0.77,
+    -2.277,
+    0.382
+   ],
+   "n": 5,
+   "open_cross_median_abs": 1.4772,
+   "open_cross_max_abs": 8.7064,
+   "closed_cross_median_abs": 0.7704,
+   "closed_cross_max_abs": 2.3113,
+   "open_heading_median_abs_deg": 23.38,
+   "closed_heading_median_abs_deg": 8.63
+  },
+  {
+   "policy": "mix",
+   "ground": "pave",
+   "controller": "heading hold",
+   "open_control_steps_to_10m_median": 1020,
+   "closed_control_steps_to_10m_median": 1018,
+   "closed_saturated_fraction_median": 0.0,
+   "cells_worse_closed": 0,
+   "per_seed_open_cross_m": [
+    1.274,
+    0.634,
+    1.154,
+    0.936,
+    -0.284
+   ],
+   "per_seed_closed_cross_m": [
+    0.065,
+    0.056,
+    0.104,
+    0.118,
+    0.169
+   ],
+   "n": 5,
+   "open_cross_median_abs": 0.9357,
+   "open_cross_max_abs": 1.2735,
+   "closed_cross_median_abs": 0.1044,
+   "closed_cross_max_abs": 0.1685,
+   "open_heading_median_abs_deg": 11.13,
+   "closed_heading_median_abs_deg": 0.6
+  },
+  {
+   "policy": "mix",
+   "ground": "rough_50mm",
+   "controller": "heading hold",
+   "open_control_steps_to_10m_median": 1209,
+   "closed_control_steps_to_10m_median": 1180,
+   "closed_saturated_fraction_median": 0.0,
+   "cells_worse_closed": 0,
+   "per_seed_open_cross_m": [
+    4.95,
+    10.002,
+    1.661,
+    -0.864,
+    -1.161
+   ],
+   "per_seed_closed_cross_m": [
+    0.014,
+    0.252,
+    0.177,
+    0.003,
+    0.356
+   ],
+   "n": 5,
+   "open_cross_median_abs": 1.6608,
+   "open_cross_max_abs": 10.0022,
+   "closed_cross_median_abs": 0.1767,
+   "closed_cross_max_abs": 0.356,
+   "open_heading_median_abs_deg": 14.66,
+   "closed_heading_median_abs_deg": 3.33
+  }
+ ],
+ "pure_pursuit": [
+  {
+   "policy": "rough5-bext",
+   "ground": "rough_50mm",
+   "controller": "pure pursuit",
+   "lookahead_m": 2.0,
+   "open_control_steps_to_10m_median": 1347,
+   "closed_control_steps_to_10m_median": 1389,
+   "closed_saturated_fraction_median": 0.0,
+   "cells_worse_closed": 0,
+   "per_seed_open_cross_m": [
+    8.706,
+    -1.477,
+    -0.076,
+    -6.209,
+    -1.266
+   ],
+   "per_seed_closed_cross_m": [
+    0.022,
+    0.071,
+    0.03,
+    0.046,
+    0.052
+   ],
+   "n": 5,
+   "open_cross_median_abs": 1.4772,
+   "open_cross_max_abs": 8.7064,
+   "closed_cross_median_abs": 0.0464,
+   "closed_cross_max_abs": 0.0713,
+   "open_heading_median_abs_deg": 23.38,
+   "closed_heading_median_abs_deg": 2.37
+  },
+  {
+   "policy": "base",
+   "ground": "rough_50mm",
+   "controller": "pure pursuit",
+   "lookahead_m": 2.0,
+   "open_control_steps_to_10m_median": 1790,
+   "closed_control_steps_to_10m_median": 1572,
+   "closed_saturated_fraction_median": 0.0,
+   "cells_worse_closed": 0,
+   "per_seed_open_cross_m": [
+    8.887,
+    -3.72,
+    -9.367,
+    4.272,
+    -2.265
+   ],
+   "per_seed_closed_cross_m": [
+    -0.022,
+    0.497,
+    0.0,
+    0.137,
+    -0.143
+   ],
+   "n": 5,
+   "open_cross_median_abs": 4.2724,
+   "open_cross_max_abs": 9.3665,
+   "closed_cross_median_abs": 0.1367,
+   "closed_cross_max_abs": 0.4973,
+   "open_heading_median_abs_deg": 46.02,
+   "closed_heading_median_abs_deg": 8.26
+  }
+ ],
+ "notes": [
+  "Schema 3. Renames since schema 1, key by key: row key seeds -> n (matching the drift artifact); ground label 50 -> rough_50mm; protocol.command from [vx, vy, wz_text] to an object; protocol.controller removed and published per row as controller; cross_abs_median -> open_cross_median_abs / closed_cross_median_abs; cross_abs_max -> open_cross_max_abs / closed_cross_max_abs; heading_median_deg -> open_heading_median_abs_deg / closed_heading_median_abs_deg; control_steps_median -> open_control_steps_to_10m_median / closed_control_steps_to_10m_median. The pure_pursuit rows take the same renames and additionally gained open_* reference columns, so schema 1's cross_abs_median / cross_abs_max / per_seed_cross_m there became closed_cross_median_abs / closed_cross_max_abs / per_seed_closed_cross_m.",
+  "cross values are metres, signed along the start heading's left axis, at the 10 m step. heading values are the heading change wrapped to +-180 degrees. per_seed_*_cross_m keeps the sign of each seed.",
+  "Two aggregation families live here. The cross and heading keys publish medians of absolute values and say so with an _abs segment; open_control_steps_to_10m_median, closed_control_steps_to_10m_median and closed_saturated_fraction_median are ordinary medians over the same n seeds and carry no _abs. Every *_max_abs is the single worst seed. The drift artifact publishes signed cross and heading medians instead, so the two files differ for a cell whose seeds straddle the line: base on rough_50mm is cross_median -2.27 m and heading_median_deg 29.46 there, against cross_median_abs 4.27 m and heading_median_abs_deg 46.02 here. The signed median cancels opposing drift; the absolute one measures how far off the line each run ended up.",
+  "Every row in rows[] and pure_pursuit[] carries controller (heading hold / pure pursuit) as a per-row constant. lookahead_m is the single key that appears only on the pure_pursuit rows, because a heading hold has none.",
+  "The loop reads the simulator's heading_w. A deploy-side loop reads an IMU or an estimate, so these numbers are upper bounds.",
+  "base under pure pursuit is the one row where the worst seed improves strongly (1.07 -> 0.50 m) while the median barely moves (0.18 -> 0.14 m)."
+ ]
+}

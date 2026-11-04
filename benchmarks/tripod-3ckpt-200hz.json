@@ -1,0 +1,154 @@
+{
+  "task": "jumper.tripod",
+  "steps": 6000,
+  "seed": 0,
+  "cases": [
+    {
+      "name": "straight",
+      "command": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "checkpoints": [
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_3000.pt"
+        },
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_6000.pt"
+        },
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_9999.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_3000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_6000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_9999.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_3000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_6000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_9999.pt"
+        }
+      ],
+      "args": [
+        "--physics-hz=200"
+      ]
+    },
+    {
+      "name": "turn",
+      "command": [
+        0.0,
+        0.0,
+        0.75
+      ],
+      "checkpoints": [
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_3000.pt"
+        },
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_6000.pt"
+        },
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_9999.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_3000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_6000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_9999.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_3000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_6000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_9999.pt"
+        }
+      ],
+      "args": [
+        "--physics-hz=200"
+      ]
+    },
+    {
+      "name": "mix",
+      "command": [
+        0.3,
+        0.0,
+        0.6
+      ],
+      "checkpoints": [
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_3000.pt"
+        },
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_6000.pt"
+        },
+        {
+          "seed": 0,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_00-18-00/model_9999.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_3000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_6000.pt"
+        },
+        {
+          "seed": 1,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_03-18-13/model_9999.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_3000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_6000.pt"
+        },
+        {
+          "seed": 2,
+          "path": "logs/jumper/jumper.tripod/2026-10-30_06-20-54/model_9999.pt"
+        }
+      ],
+      "args": [
+        "--physics-hz=200"
+      ]
+    }
+  ]
+}

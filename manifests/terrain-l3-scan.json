@@ -1,0 +1,17 @@
+{
+  "runs": [
+    {
+      "name": "L3-scratch-3000",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 3000,
+      "num_envs": 4096,
+      "args": [
+        "--terrain",
+        "--terrain-roughness-mm=5",
+        "--terrain-seed=0",
+        "--terrain-scan"
+      ]
+    }
+  ]
+}

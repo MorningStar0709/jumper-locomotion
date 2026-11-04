@@ -1,0 +1,31 @@
+{
+  "runs": [
+    {
+      "name": "R5-1000",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 1000,
+      "num_envs": 4096,
+      "args": ["--terrain", "--terrain-roughness-mm=5", "--terrain-seed=0"],
+      "start_from": "logs/jumper/jumper.tripod/2026-10-30_06-20-54"
+    },
+    {
+      "name": "R10-1000",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 1000,
+      "num_envs": 4096,
+      "args": ["--terrain", "--terrain-roughness-mm=10", "--terrain-seed=0"],
+      "start_from": "logs/jumper/jumper.tripod/2026-10-30_06-20-54"
+    },
+    {
+      "name": "S2cm-1000",
+      "task": "jumper.tripod",
+      "seed": 2,
+      "iterations": 1000,
+      "num_envs": 4096,
+      "args": ["--terrain", "--terrain-steps-m=0.02", "--terrain-seed=0"],
+      "start_from": "logs/jumper/jumper.tripod/2026-10-30_06-20-54"
+    }
+  ]
+}
