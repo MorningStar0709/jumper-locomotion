@@ -87,6 +87,9 @@ trained on 5 mm bumps, which keeps walking.
 | 4 cm staircase | **rejected** | the arm walks 0.061 m/s on its own rung and drags 3 cm from 0.415 → 0.220 m/s |
 | Critic-only terrain scan | **null result** | entropy 6.97 vs 7.23, error 0.1786 vs 0.1796 against a no-scan control |
 | Foot odometry | **0.19–0.20 m per 10 m** | body frame, median of 5 estimators over 12 walks |
+| 20 ms actuation delay | yaw error **1.4–1.9×**, speed 0.86–0.92× | 3 policies; the only disturbance axis that left its gate |
+| Friction μ 0.2–1.2 | speed holds **0.97–1.01×** | same protocol; not a wall at any tested value |
+| Recovery after a 0.5 m/s shove, 3 cm stairs | 0.31 s vs **2.93 s** for the flat-trained policy | 418 absorbed shoves, median over 3 policies × 5 seeds |
 
 The rule behind every row: **a number without its conditions does not exist** — replay is
 not reproducible across processes, so comparisons are paired inside one run, and a
@@ -119,6 +122,15 @@ difference below the measurement's resolution is not a difference
   IMU's absolute heading, reaches 0.04 m. The code is kept, the contract does not enable it.
 - **A critic with a terrain scan changed nothing** measurable against a control trained
   identically with scan. Recorded as a null result rather than a quietly dropped branch.
+- **The ceiling is a surface, and past it the answer is not more surface.** Three attempts to
+  train deeper than 3 cm — a 3.5 cm rung, a 4 cm rung, and a grid mixing 3/3.5/4 cm tiles —
+  each destroyed the gait it started from, while the same policy walks 4 cm untrained. The
+  mixed grid also diverged to NaN after 438 iterations. Deepening needs a different variable
+  (action space or reward), not a harder floor.
+- **Delay compensation was built, measured, and removed.** Extrapolating the heading by the
+  IMU's own rate made every cell equal or worse: 20 ms of lag is a 0.04 rad phase error at
+  `kp = 2.0`, an order of magnitude below the drift the loop fights. The fix was reverted
+  rather than shipped because a control change that costs nothing measurable is still a change.
 
 ---
 
@@ -127,12 +139,11 @@ difference below the measurement's resolution is not a difference
 Three open ends, in the order I would take them — each one is a question the work above left
 measurable rather than a wish:
 
-1. **The staircase past 3 cm.** Two attempts to step up (3.5 cm and 4 cm, both resumed from the
-   3 cm arm) destroyed the gait, while the same policy walks 4 cm fine. That says the missing
-   piece is the curriculum, not the ceiling: a surface that mixes 3 cm and 4 cm tiles would let a
-   policy meet the harder step without the whole grid leaving the distribution it was trained on.
-   The mixture machinery already exists; what is missing is a rung that varies *depth* rather
-   than amplitude.
+1. **Something other than a surface, past 3 cm.** This one is closed, and it cost three
+   attempts to close: a 3.5 cm rung, a 4 cm rung and a 3/3.5/4 cm mixed grid all destroyed the
+   gait they started from, while the same policy walks 4 cm untrained. The next step there is
+   an action-space or reward change, not a harder floor — and it is a different project, not a
+   missing experiment.
 2. **A pose source good enough for path tracking.** The line loop lost to the IMU-only loop by an
    order of magnitude, and the reason is dead reckoning: 0.19 m of drift per 10 m, amplified by
    the loop that corrects against it. Foot odometry cannot be fixed by tuning — slip is
@@ -186,6 +197,7 @@ Chinese; the index carries an English line for each).
 | [Heading loop](docs/reports/research-heading-loop-20261102.md) | The loop's effect in simulation and the knee in its gain |
 | [Heading hold in the controller](docs/reports/research-heading-hold-controller-20261102.md) | The same loop in Rust, its contract, and what it refuses |
 | [Pursuit and the line loop](docs/reports/research-pursuit-line-20261104.md) | Foot odometry, forward kinematics, and the loop that lost to the IMU |
+| [Deployment envelope](docs/reports/research-deployment-envelope-20261105.md) | Delay is the only wall, friction is not, and a shove costs 0.3 s or 3 s depending on what the policy was trained on |
 
 ## Credit
 
