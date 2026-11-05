@@ -24,6 +24,7 @@ Every table, figure and number is language-independent.
 | 8 | [Heading hold in the controller](research-heading-hold-controller-20261102.md) | The same loop in Rust: feed-forward, contract validation, and the two things it refuses. | 同一回路在 Rust 控制器里的实现：前馈、契约校验，以及它拒绝的两类输入。 |
 | 9 | [Pursuit and the line loop](research-pursuit-line-20261104.md) | Foot odometry, forward kinematics, and the line loop that lost to the IMU by an order of magnitude. | 足端里程计、正解算，以及输给 IMU 一个数量级的直线回路。 |
 | 10 | [Deployment envelope](research-deployment-envelope-20261105.md) | What survives when sim and reality disagree: delay is the only wall, friction is not, and how long a shove costs. | 仿真与真实不一致时还剩多少：延迟是唯一的墙、摩擦不是，以及挨一推要多久才回到线上。 |
+| 11 | [Measurement instruments](research-measurement-instruments-20261105.md) | Five tools, each of which first returned a legal output that measured the wrong thing. | 五个工具，每一个第一次都返回了合法输出、却量错了东西。 |
 
 Two conventions used throughout: a number without its conditions is not a number, and a
 difference below the measurement's resolution is not a difference — see

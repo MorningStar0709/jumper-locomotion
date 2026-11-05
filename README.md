@@ -198,6 +198,7 @@ Chinese; the index carries an English line for each).
 | [Heading hold in the controller](docs/reports/research-heading-hold-controller-20261102.md) | The same loop in Rust, its contract, and what it refuses |
 | [Pursuit and the line loop](docs/reports/research-pursuit-line-20261104.md) | Foot odometry, forward kinematics, and the loop that lost to the IMU |
 | [Deployment envelope](docs/reports/research-deployment-envelope-20261105.md) | Delay is the only wall, friction is not, and a shove costs 0.3 s or 3 s depending on what the policy was trained on |
+| [Measurement instruments](docs/reports/research-measurement-instruments-20261105.md) | Five tools, and the first answer each of them gave that was formatted correctly and wrong |
 
 ## Credit
 

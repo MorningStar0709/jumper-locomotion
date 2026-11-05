@@ -124,7 +124,7 @@ vendor 的 `mjlab`、机器人网格与 Rust vendored crates 留在上游。叠�
 
 ## 报告
 
-先读能独立读的一页：**[docs/OVERVIEW.md](docs/OVERVIEW.md)**。它背后的十篇笔记本由 **[docs/reports/INDEX.md](docs/reports/INDEX.md)** 索引（正文为中文，每篇附一句英文）。
+先读能独立读的一页：**[docs/OVERVIEW.md](docs/OVERVIEW.md)**。它背后的十一篇笔记本由 **[docs/reports/INDEX.md](docs/reports/INDEX.md)** 索引（正文为中文，每篇附一句英文）。
 
 | 报告 | 回答什么 |
 |:--|:--|
@@ -138,6 +138,7 @@ vendor 的 `mjlab`、机器人网格与 Rust vendored crates 留在上游。叠�
 | [控制器里的航向保持](docs/reports/research-heading-hold-controller-20261102.md) | 同一回路的 Rust 实现、契约与拒绝项 |
 | [纯追踪与直线回路](docs/reports/research-pursuit-line-20261104.md) | 足端里程计、正解算，以及输给 IMU 的回路 |
 | [部署包线](docs/reports/research-deployment-envelope-20261105.md) | 延迟是唯一的墙、摩擦不是，以及挨一推要 0.3 秒还是 3 秒，取决于它训在什么地面上 |
+| [测量仪器](docs/reports/research-measurement-instruments-20261105.md) | 五个工具，以及它们各自第一次给出的那个格式正确、而答案错误的读数 |
 
 ## 目录结构
 
