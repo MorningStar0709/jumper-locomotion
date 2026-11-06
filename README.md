@@ -1,5 +1,8 @@
 # Jumper locomotion — heading, terrain, and where the ceiling actually is
 
+📹 **[40-second overview (MP4, 3.7 MB)](docs/media/jumper-wide-en.mp4)** — English voice-over, 1920×1080
+
+
 ![Jumper](docs/media/jumper-hero.png)
 
 [![Checks](https://github.com/MorningStar0709/jumper-locomotion/actions/workflows/checks.yml/badge.svg)](https://github.com/MorningStar0709/jumper-locomotion/actions/workflows/checks.yml)
