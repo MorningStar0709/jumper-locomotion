@@ -211,10 +211,12 @@ Chinese; the index carries an English line for each).
 
 ## Credit
 
-- **Jumper** — hardware, SDK and the original repository: KingKong Robotics, Apache-2.0.
+- **[Jumper](https://github.com/KingKongRobotics/jumper)** — hardware, SDK and the original repository: KingKong Robotics, Apache-2.0.
 - **[mjlab](https://github.com/mujocolab/mjlab)** — the training framework this stack vendors (1.6.0, Apache-2.0), with five files marked `[mjrl]` where they were changed; the list is in `docs/VENDOR.md`.
-- **Isaac Lab** — parts of `lab_api` derive from it (BSD-3-Clause).
-- **MuJoCo Menagerie** — robot assets (BSD-3-Clause).
+- **[rsl_rl](https://github.com/leggedrobotics/rsl_rl)** — the PPO implementation vendored alongside mjlab (5.4.2, BSD-3-Clause).
+- **[Isaac Lab](https://github.com/isaac-sim/IsaacLab)** — parts of `lab_api` derive from it (BSD-3-Clause).
+- **[MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie)** — robot assets (BSD-3-Clause).
+- **[MuJoCo](https://github.com/google-deepmind/mujoco)** — the physics engine, and **[MuJoCo Warp](https://github.com/google-deepmind/mujoco_warp)** for the GPU backend (both Apache-2.0).
 
 `NOTICE` carries the full attribution; `licenses/` carries the third-party texts.
 

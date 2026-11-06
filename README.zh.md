@@ -125,8 +125,10 @@ vendor 的 `mjlab`、机器人网格与 Rust vendored crates 留在上游。叠�
 
 ## 致谢
 
-上游是 **Jumper**（KingKong Robotics，Apache-2.0）；训练框架 [mjlab](https://github.com/mujocolab/mjlab) 1.6.0（Apache-2.0，五处修改以 `[mjrl]` 标注，清单见 `docs/VENDOR.md`）；
-`lab_api` 部分派生自 **Isaac Lab**（BSD-3-Clause）；机器人资产来自 **MuJoCo Menagerie**（BSD-3-Clause）。
+上游是 **[Jumper](https://github.com/KingKongRobotics/jumper)**（KingKong Robotics，Apache-2.0）；训练框架 [mjlab](https://github.com/mujocolab/mjlab) 1.6.0（Apache-2.0，五处修改以 `[mjrl]` 标注，清单见 `docs/VENDOR.md`）；
+PPO 实现在 [rsl_rl](https://github.com/leggedrobotics/rsl_rl) 5.4.2（BSD-3-Clause）之上；
+`lab_api` 部分派生自 [Isaac Lab](https://github.com/isaac-sim/IsaacLab)（BSD-3-Clause）；机器人资产来自 [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie)（BSD-3-Clause）；
+物理引擎是 [MuJoCo](https://github.com/google-deepmind/mujoco)，GPU 后端用 [MuJoCo Warp](https://github.com/google-deepmind/mujoco_warp)（均 Apache-2.0）。
 完整声明见 `NOTICE`，第三方许可证全文在 `licenses/`。
 
 ## 报告
