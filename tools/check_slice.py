@@ -50,7 +50,12 @@ def main() -> int:
 
     for path in paths:
         if path.suffix.lower() in FORBIDDEN_SUFFIXES:
-            problems.append(f"{path} — binaries and checkpoints stay upstream")
+            # A demo video is the one binary this slice is allowed to carry: it is
+            # ours, it is referenced by the READMEs, and a portfolio without one
+            # cannot show locomotion. Everything else (weights, ONNX, RKNN,
+            # libraries) still belongs to the upstream checkout.
+            if not (path.suffix.lower() == ".mp4" and path.parts[:2] == ("docs", "media")):
+                problems.append(f"{path} — binaries and checkpoints stay upstream")
         if set(FORBIDDEN_PARTS) & set(path.parts):
             problems.append(f"{path} — build and cache directories are not published")
 
