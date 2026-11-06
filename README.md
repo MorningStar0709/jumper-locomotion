@@ -1,4 +1,6 @@
-# Jumper locomotion — heading, terrain, and where the ceiling actually is
+# Jumper locomotion
+
+**Heading, terrain, and where the ceiling actually is**
 
 [![Jumper climbing a 3 cm step](docs/media/climb-preview.gif)](docs/media/jumper-wide-en.mp4)
 

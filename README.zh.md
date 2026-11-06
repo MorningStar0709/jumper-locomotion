@@ -1,4 +1,6 @@
-# Jumper 运动控制 — 航向、地形，以及天花板到底在哪
+# Jumper 运动
+
+**航向、地形，以及天花板究竟在哪里**
 
 [![Jumper 爬 3 厘米台阶](docs/media/climb-preview.gif)](docs/media/jumper-wide-en.mp4)
 
