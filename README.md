@@ -1,6 +1,8 @@
 # Jumper locomotion — heading, terrain, and where the ceiling actually is
 
-📹 **[40-second overview (MP4, 3.7 MB)](docs/media/jumper-wide-en.mp4)** — English voice-over, 1920×1080
+[![Jumper climbing a 3 cm step](docs/media/climb-preview.gif)](docs/media/jumper-wide-en.mp4)
+
+📹 *Click the clip for the 40-second overview (MP4, 3.0 MB) — English voice-over.*
 
 
 

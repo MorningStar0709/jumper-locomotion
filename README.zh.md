@@ -1,6 +1,8 @@
 # Jumper 运动控制 — 航向、地形，以及天花板到底在哪
 
-📹 **[40 秒概览片（MP4，3.7 MB）](docs/media/jumper-wide-en.mp4)** — 英文旁白，1920×1080
+[![Jumper 爬 3 厘米台阶](docs/media/climb-preview.gif)](docs/media/jumper-wide-en.mp4)
+
+📹 *点上面这段动画看 40 秒概览片（MP4，3.0 MB，英文旁白）。*
 
 
 ![Jumper](docs/media/jumper-hero.png)
